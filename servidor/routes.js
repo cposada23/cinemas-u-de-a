@@ -7,6 +7,9 @@ module.exports = function (app) {
     //Todas las rutas iran aqui
     app.use('/api/usuario', require('./api/usuario'));
     app.use('/api/cinema', require('./api/cinema'));
+    
+    //autenticacion
+    app.use('/auth', require('./auth'));
     //--------------------------------
     
     //Rutas indefinidas retornaran 404

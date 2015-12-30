@@ -23,13 +23,25 @@
             console.error(error);
         });
         
-        var id = "56834dcd927556f7183c86fa";
+        var id = "5684439b387280ba03710f59";
         
         //Retornar un usuario con el id 
         $http.get('/api/usuario/'+ id ).success(function(usuario) {
             console.log("Usuario encontrado" + JSON.stringify(usuario));
         }).error(function(error) {
             console.error(error);
+        });
+        
+        var token = {};
+        
+        //login
+        $http.post('/auth/local', {email: 'q', password:'q'}).success(function (data) {
+            console.log("login correcto");
+            console.log(JSON.stringify(data));
+            //token = data.token;
+            
+        }).error(function (error) {
+            console.error('fallo' + error);
         });
         
     }]);

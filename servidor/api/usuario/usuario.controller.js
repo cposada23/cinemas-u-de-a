@@ -24,7 +24,9 @@ exports.create = function (req,res) {
  */
 
 exports.listarUsuarios = function (req, res) {
-    usuario.find({},function (err, usuarios) {
+   
+     
+    usuario.find({},'-salt -hashedPassword',function (err, usuarios) {
         if(err){return handleError(res,err);}
         console.log("Usuariios");
         return res.status(200).json(usuarios);      
@@ -37,10 +39,10 @@ exports.listarUsuarios = function (req, res) {
  
 exports.obtenerUsuario = function (req,res) {
     var ID = req.params.id;
-    usuario.findById(ID, function (err,usuario) {
+    usuario.findById(ID,'-salt -hashedPassword', function (err,usuario) {
         if(err){return handleError(res,err);}
-        if(!usuario){return res.send(401)};
-        console.log("encontrado"  +  JSON.stringify(usuario));
+        if(!usuario){return res.sendStatus(401)};
+        //console.log("encontrado"  +  JSON.stringify(usuario));
         return res.status(200).json(usuario);
     })
 }
@@ -61,7 +63,7 @@ function handleError(res, err) {
         tipoDoc: "cc",
         nombres: "q",
         apellidos: "p",
-        correo: "q",
+        email: "q",
         password: "q", 
         sexo:"masculino",
         barrio:"laureew",

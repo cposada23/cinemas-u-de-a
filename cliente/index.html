@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html ng-app="cineUdea">
+  <head>
+    
+    <title>Cine Udea</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="cliente/css/app.css" type="text/css" />
+    
+    
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/estiloPrincipal.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Maven+Pro:500' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+     
+  </head>
+  
+  <body>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="navController as tab">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li ng-class="{ active: tab.isSet(1) }"><a ui-sref="Home" ng-click="setTab(1)">Home</a></li>
+            <li class="dropdown">
+              <a ng-click="setTab(2)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cartelera <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                 <li ng-repeat="cine in cines"><a ui-sref="Cartelera({cineNombre:cine.nombre ,carteleraID:cine.cartelera })">{{cine.nombre}}</a></li>
+              </ul>
+            </li>
+          </ul>
+          
+    
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-show="!loggedIn"><a ui-sref="Registro" >Registrarse</a></li>
+            <li ng-show="!loggedIn" class="dropdown">
+              <a ng-click="setTab(2)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Login <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>email: <input type="text" name="" ng-model="User.email"/></li>
+                <li>Contraseña: <input type="password" name="" ng-model="User.password"/></li>
+                <button ng-click="login()">Login</button>
+              </ul>
+            </li>
+            <li ng-show="loggedIn">Bienvenido {{nombre}}</li>
+            <li ng-show="loggedIn"><a ng-click="logout()"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="jumbotron aa">
+      <div class="container text-center">
+        <h1>Cine U de A</h1>      
+        <p><span class="glyphicon glyphicon-facetime-video"></span> Visita nuestros cines <span class="glyphicon glyphicon-facetime-video"></span></p>
+      </div>
+    </div>
+    
+    <!-- Para cargar el contenido dinamico -->
+    <div  ui-view class="b"></div>
+    
+   <!-- <footer class="container-fluid text-center">
+      <p>Cinemas U de A</p>  
+      <form class="form-inline"><strong>Suscribete: </strong>
+        <input type="email" class="form-control" size="50" placeholder="Email">
+        <button type="button" class="btn btn-danger">Sign Up</button>
+      </form>
+    </footer>
+    -->
+    
+    <!-- script app -->
+    
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+    <!-- uirouter -->
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    
+    
+    <script type="text/javascript" src="cliente/app/app.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/navController.js"></script>
+    <!--
+    <script type="text/javascript" src="cliente/app/controladores/homeCtrl.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/registroController.js"></script>
+    
+    <script type="text/javascript" src="cliente/app/controladores/carteleraCtrl.js"></script>
+    
+    <script type="text/javascript" src="cliente/app/controladores/peliculaController.js"></script>
+    
+    
+   -->
+    
+     
+    
+  </body>
+</html>

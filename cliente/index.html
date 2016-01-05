@@ -43,6 +43,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li ng-show="!loggedIn"><a ui-sref="Registro" >Registrarse</a></li>
             <li ng-show="!loggedIn"><a ui-sref="Login">Login</a>
+            <li ng-show="!loggedIn"><a ng-click="logout()">Logout</a>
             </li>
             <li ng-show="loggedIn">Bienvenido {{nombre}}</li>
             <li ng-show="loggedIn"><a ng-click="logout()"><span class="glyphicon glyphicon-user"></span> Logout</a></li>

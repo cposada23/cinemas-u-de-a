@@ -27,6 +27,7 @@ module.exports = function (app) {
     
     
     app.engine('html', require('ejs').renderFile);
+    app.set('view engine' , 'html');
     app.use(compression());
     app.use(bodyParser.urlencoded({extended:false}));
     app.use(bodyParser.json());

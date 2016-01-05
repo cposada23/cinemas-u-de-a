@@ -1,7 +1,7 @@
 (function () {
     var app = angular.module('cineUdea');
     
-    app.controller('navController',['$scope','$state','$http', function ($scope,$state,$http) {
+    app.controller('navController',['$scope','$state','$http','Auth','$location' ,function ($scope,$state,$http,Auth,$location) {
         
         
         //listar cines
@@ -45,6 +45,12 @@
         });
         
         */
+        
+        $scope.logout = function () {
+            console.log("logg out");
+            Auth.logout();
+            $location.path('/login');
+        }
         
     }]);
     

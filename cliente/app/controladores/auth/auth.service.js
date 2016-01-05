@@ -37,7 +37,9 @@ angular.module('cineUdea').factory('Auth', function Auth($location, $rootScope, 
           * borra el acces token y la informacion del usuario
           */
         logout: function () {
+            console.log("logotu auth service");
             $cookieStore.remove('token');
+            console.log($cookieStore.get('token'));
             currentUser = {};
         },
         
@@ -47,6 +49,12 @@ angular.module('cineUdea').factory('Auth', function Auth($location, $rootScope, 
          */
          getCurrentUser: function () {
              return currentUser;
+         },
+         
+         
+         
+         getToken: function () {
+             return $cookieStore.get('token');
          }
          
         

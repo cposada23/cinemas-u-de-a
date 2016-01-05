@@ -19,3 +19,4 @@ server.listen(config.port, config.ip,function () {
     console.log('Servidor express escuchando en el puerto ' + config.port + ' con IP: ' +  config.ip  );
 });
 
+exports = module.exports = app;

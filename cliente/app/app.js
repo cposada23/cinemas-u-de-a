@@ -1,10 +1,11 @@
 (function(){
     var app = angular.module('cineUdea', ['ui.router', 'ngCookies' , 'ngResource']);
     //configuracion de la app
-    app.config(function($stateProvider, $urlRouterProvider){
+    app.config(function($stateProvider, $urlRouterProvider,  $httpProvider){
         //default
         $urlRouterProvider.otherwise('home');
-        
+        //$locationProvider.html5Mode(true);
+        $httpProvider.interceptors.push('authInterceptor');
         $stateProvider
         .state('Home',{
             url:"/home",
@@ -34,6 +35,23 @@
             controller:"peliculaController"
         });
         */
+    });
+    
+    app.factory('authInterceptor' , function ($rootScope,$q,$cookieStore , $location) {
+        return {
+            request: function (config) {
+                config.headers = config.headers||{};
+                if($cookieStore.get('token')){
+                    config.headers.Authorization = 'Bearer '+ $cookieStore.get('token');
+                }
+                return config;
+            }
+        };
+    });
+    app.run(function ($rootScope, $location, Auth) {
+        $rootScope.$on('$routeChangeStart', function (event, next) {
+            
+        });
     });
 }());
 

@@ -1,5 +1,5 @@
 <div class="col-sm-8 col-sm-offset-2 blanco">
-    <form class="form-horizontal">
+    <form class="form-horizontal" name="form" ng-submit="registro(form)" novalidate>
       <fieldset>
     
         <!-- Form Name -->
@@ -9,8 +9,8 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="nombre">Nombre</label>
           <div class="col-md-6">
-            <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required="">
-    
+            <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required>
+            <p class =" help-block" ng-show="form.nombre.$error.required && enviada"> El nombre es requerido </p>
           </div>
         </div>
     
@@ -18,8 +18,8 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="apellido">Apellidos</label>
           <div class="col-md-6">
-            <input id="apellido" name="apellido" type="text" placeholder="Apellidos" class="form-control input-md" required="">
-    
+            <input id="apellido" name="apellido" type="text" placeholder="Apellidos" class="form-control input-md" required>
+            <p class =" help-block" ng-show="form.apellido.$error.required && enviada"> El apellido es requerido </p>
           </div>
         </div>
     
@@ -27,20 +27,21 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="tipo-documento">Tipo de documento</label>
           <div class="col-md-4">
-            <select id="tipo-documento" name="tipo-documento" class="form-control">
+            <select id="tipo-documento" name="tipo-documento" class="form-control" required>
               <option value="1">CC</option>
               <option value="2">TI</option>
               <option value="">CE</option>
             </select>
           </div>
+          <p class =" help-block" ng-show="form.tipo-documento.$error.required && enviada"> El apellido es requerido </p>
         </div>
     
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="num-documento">Número de documento</label>
           <div class="col-md-4">
-            <input id="num-documento" name="num-documento" type="text" placeholder="Número documento" class="form-control input-md" required="">
-    
+            <input id="num-documento" name="num-documento" type="text" placeholder="Número documento" class="form-control input-md" required>
+            <p class =" help-block" ng-show="form.num-documento.$error.required && enviada"> El numero de documento es requerido </p>
           </div>
         </div>
     
@@ -48,7 +49,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="telefono">Teléfono</label>
           <div class="col-md-4">
-            <input id="telefono" name="telefono" type="text" placeholder="Teléfono" class="form-control input-md" required="">
+            <input id="telefono" name="telefono" type="text" placeholder="Teléfono" class="form-control input-md">
     
           </div>
         </div>
@@ -57,19 +58,21 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="genero">Género</label>
           <div class="col-md-4">
-            <select id="genero" name="genero" class="form-control">
+            <select id="genero" name="genero" class="form-control" required>
               <option value="1">Femenino</option>
               <option value="2">Masculino</option>
             </select>
           </div>
+          <p class =" help-block" ng-show="form.genero.$error.required && enviada"> CUal es tu genero? </p>
         </div>
     
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="email">Email</label>
           <div class="col-md-6">
-            <input id="email" name="email" type="email" placeholder="Email" class="form-control input-md" required="">
+            <input id="email" name="email" type="email" placeholder="Email" class="form-control input-md" required>
             <span class="help-block">usuario@example.com</span>
+            <p class =" help-block" ng-show="form.email.$error.required && enviada"> El email es requerido </p>
           </div>
         </div>
     
@@ -77,8 +80,9 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="contrasena">Contraseña</label>
           <div class="col-md-6">
-            <input id="contrasena" name="contrasena" type="password" placeholder="" class="form-control input-md" required="">
+            <input id="contrasena" name="contrasena" type="password" placeholder="" class="form-control input-md" required>
             <span class="help-block">Debe tener entre 6 y 15 carácteres... erfvdcs</span>
+            <p class =" help-block" ng-show="form.contrasena.$error.required && enviada"> La contraseña es requerida </p>
           </div>
         </div>
     
@@ -86,8 +90,8 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="confContrasena">Confirmar contraseña</label>
           <div class="col-md-6">
-            <input id="confContrasena" name="confContrasena" type="password" placeholder="" class="form-control input-md" required="">
-    
+            <input id="confContrasena" name="confContrasena" type="password" placeholder="" class="form-control input-md" required>
+            <p class =" help-block" ng-show="form.confContrasena.$error.required && enviada"> Confirma tu contraseña </p>
           </div>
         </div>
     
@@ -106,8 +110,8 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="barrio">Barrio</label>
           <div class="col-md-6">
-            <input id="barrio" name="barrio" type="text" placeholder="Barrio" class="form-control input-md" required="">
-    
+            <input id="barrio" name="barrio" type="text" placeholder="Barrio" class="form-control input-md" >
+            
           </div>
         </div>
     
@@ -115,7 +119,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="direccion">Dirección</label>
           <div class="col-md-6">
-            <input id="direccion" name="direccion" type="text" placeholder="Dirección" class="form-control input-md" required="">
+            <input id="direccion" name="direccion" type="text" placeholder="Dirección" class="form-control input-md" >
     
           </div>
         </div>
@@ -124,8 +128,8 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="fechaNacimiento">Fecha de nacimiento</label>
           <div class="col-md-4">
-            <input id="fechaNacimiento" name="fechaNacimiento" type="date" placeholder="dd/mm/aaaa" class="form-control input-md">
-    
+            <input id="fechaNacimiento" name="fechaNacimiento" type="date" placeholder="dd/mm/aaaa" class="form-control input-md" required>
+            <p class =" help-block" ng-show="form.fechaNacimiento.$error.required && enviada"> La fecha de nacimiento es requerida </p>
           </div>
         </div>
     
@@ -133,7 +137,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="generoFavorito">Genéro de película favorito</label>
           <div class="col-md-4">
-            <select id="generoFavorito" name="generoFavorito" class="form-control">
+            <select id="generoFavorito" name="generoFavorito" class="form-control" required>
               <option value="1">Acción</option>
               <option value="2">Drama</option>
               <option value="">Comedia</option>
@@ -142,6 +146,7 @@
               <option value="">Suspenso</option>
             </select>
           </div>
+          <p class =" help-block" ng-show="form.generoFavorito.$error.required && enviada"> Dinos tu genero favorito para recomendarte peliculas de tu preferencia </p>
         </div>
     
         <!-- Button -->

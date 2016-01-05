@@ -7,7 +7,7 @@ var auth = require('../../auth/auth.service');
 var router = express.Router();
 
 router.get('/', controller.listarUsuarios); //Listar todos los usuarios
-router.get('/me', auth.isAuthenticated(),controller.me);
+router.get('/me', auth.isAuthenticated(),controller.me); //Obtener mis datos de usuario
 router.post('/', controller.create);  //crear un nuevo usuario
 router.get('/:id', controller.obtenerUsuario); //Obtener un usuario por su ID
 

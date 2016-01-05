@@ -45,6 +45,24 @@ angular.module('cineUdea').factory('Auth', function Auth($location, $rootScope, 
             console.log("current user auth.service" + currentUser);
         },
         
+        /**
+         * creo un nuevo usuario
+         */
+         
+         createUser:function (usuario, callback) {
+             var cb = callback || angular.noop;
+             
+             return Usuario.save(usuario, function (data) {
+                $cookieStore.put('token', data.token);
+                currentUser = Usuario.get();
+                return cb(usuario);
+                 
+             }, function (err) {
+                 this.logout();
+                 return cb(err);
+             }.bind(this)).$promise;
+         },
+        
         
         /**
          * Obtiene la informacion del usuario autenticado
@@ -53,6 +71,23 @@ angular.module('cineUdea').factory('Auth', function Auth($location, $rootScope, 
              return currentUser;
          },
          
+         isLoggedIn: function () {
+             return currentUser.hasOwnProperty('tipo');
+         },
+         
+         isLoggedInAsync: function (cb) {
+           if(currentUser.hasOwnProperty('$promise')){
+               currentUser.$promise.then(function () {
+                   cb(true);
+               }).catch(function () {
+                   cb(false);
+               });
+           }else if(currentUser.hasOwnProperty('tipo')){
+               cb(true);
+           }else{
+               cb(false);
+           }
+         },
          
          
          getToken: function () {

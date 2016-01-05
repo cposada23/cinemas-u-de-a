@@ -22,7 +22,8 @@ var UserSchema = new Schema({
         type:String,
         default:'usuario'
     },
-    puntos: {type: Number, default: 0}
+    puntos: {type: Number, default: 0},
+    token: {String , default:''}
 });
 
 
@@ -46,13 +47,13 @@ UserSchema.virtual('profile').get(function () {
 
 
 //informacion que se pondra en el token
-UserSchema.virtual('token').get(function() {
+/*UserSchema.virtual('token').get(function() {
     return {
         '_id': this._id,
         'tipo': this.tipo
     };
 });
-
+*/
 
 /**
  * validaciones

@@ -25,7 +25,6 @@ exports.create = function (req,res) {
 
 exports.listarUsuarios = function (req, res) {
    
-     
     usuario.find({},'-salt -hashedPassword',function (err, usuarios) {
         if(err){return handleError(res,err);}
         console.log("Usuariios");
@@ -50,12 +49,13 @@ exports.obtenerUsuario = function (req,res) {
 
 exports.me = function (req, res,next) {
     console.log("llame al me");
-    var id = req.usuario._id;
-    usuario.findone({
-        _id:id
+    var token = req.token;
+    usuario.findOne({
+        token:token
     }, '-salt -hashedPassword', function (err,usuario) {
         if(err) return next(err);
         if(!usuario) return res.status(401);
+        console.log("Usuario en el me " + JSON.stringify(usuario));
         res.json(usuario);
     });
 }

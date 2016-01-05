@@ -15,6 +15,7 @@ function isAuthenticated() {
             console.log("lame al if en isAuthenticated");
             req.headers.authorization = 'Bearer ' + req.query.acces_token;
         }
+       
         console.log("valido");
         validateJwt(req, res, next);
         console.log("valide");
@@ -22,14 +23,41 @@ function isAuthenticated() {
     
     .use(function (req,res,next) {
         console.log("LLamo al otro use ");
-        usuario.findById(req.usuario._id, function (err , usuario) {
-            if (err) {
-                return next(err);
-            }
-            if (!usuario) return res.send(401);
-            req.usuario = usuario;
+        
+        var bearerHeader = req.headers["authorization"];
+        console.log(JSON.stringify("bearerheader  " + bearerHeader));
+        var token;
+        if(typeof bearerHeader !=='undefined'){
+            var bearer = bearerHeader.split(" ");
+            token = bearer[1];
+            console.log("entro al if token = " + token);
+            req.token = token;
+            usuario.findOne({token:token}, function (err, user) {
+                if (err) console.erro(err);
+                else console.log("usuario en authservice " + JSON.stringify(user));
+            })
+            next()
+        }else{
+            console.log("entro al else token " + token );
+            res.status(403);
+        }
+        
+        /*
+        if(req.usuario!= undefined){
+            usuario.findById(req.usuario._id, function (err , usuario) {
+                if (err) {
+                    return next(err);
+                }
+                if (!usuario) return res.send(401);
+                req.usuario = usuario;
+                next();
+            });
+        }
+        else{
             next();
-        });
+            console.log("usuario undefined");
+        }
+        */
     });
     
 };
@@ -52,7 +80,7 @@ function hasRole(roleRequired) {
 
 // retorna una cookie firmada con el secreto de la app
 function singToken(id) {
-    return jwt.sign({_id:id}, 'shhhhhhhh');
+    return jwt.sign({_id:id}, 'shhhhhhhh', {expiresInMinutes: 60*5});
 };
 
 function setTokenCookie(req, res) {

@@ -37,10 +37,12 @@ angular.module('cineUdea').factory('Auth', function Auth($location, $rootScope, 
           * borra el acces token y la informacion del usuario
           */
         logout: function () {
+            console.log("current user auth.service" + JSON.stringify(currentUser));
             console.log("logotu auth service");
             $cookieStore.remove('token');
             console.log($cookieStore.get('token'));
             currentUser = {};
+            console.log("current user auth.service" + currentUser);
         },
         
         

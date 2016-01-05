@@ -23,7 +23,7 @@
             console.error(error);
         });
         
-        var id = "5684439b387280ba03710f59";
+        var id = "568c03b1360c90d1116dfd09";
         
         //Retornar un usuario con el id 
         $http.get('/api/usuario/'+ id ).success(function(usuario) {
@@ -47,6 +47,7 @@
         */
         
         $scope.logout = function () {
+            console.log("Current user navcontroller" +JSON.stringify( Auth.getCurrentUser()));
             console.log("logg out");
             Auth.logout();
             $location.path('/login');

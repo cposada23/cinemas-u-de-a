@@ -10,14 +10,39 @@ var jwt = require('jsonwebtoken');
  */
 
 exports.create = function (req,res) {
+    console.log(JSON.stringify(req.body));
+    var newUser = req.body;
+    
+    console.log("Usuario en create" + JSON.stringify(newUser));
+    usuario.create(newUser, function (err,user) {
+        if(err){
+            console.log("fallo");
+            return handleError(res, err);
+        }
+        else {
+            console.log("si sale algo devuelve el user" + JSON.stringify(user));
+            var token = jwt.sign({_id:user._id}, 'shhhhhhhh', {expiresInMinutes: 60*5});
+            user.token = token;
+            usuario.findByIdAndUpdate(user._id, {$set: {token:token}}, function (err, usuario) {
+                if (err) return handleError(res,err);
+                else{
+                    console.log("Usuario actualizado en create. " + usuario);
+                    console.log("creado");
+                    res.status(200).json({token:token});
+                }
+            });
+            
+        }
+    });
+    /*
     var newUser = new usuario(req.body);
-    var token = jwt.sign({_id:newUser._id}, 'shhhhhhhh', {expiresInMinutes: 60*5});
-    newUser.token = token;
+    
+    console.log("Nuevo usuario " + JSON.stringify(newUser));
     newUser.save(function (err,usuario) {
-        if(err)throw new Error;
+        if(err)return handleError(res, err);
         console.log('usuario guardado exitosamente');
         res.status(200).json({token:token});
-    });
+    });*/
 };
 
 
@@ -66,6 +91,7 @@ exports.me = function (req, res,next) {
 
 
 function handleError(res, err) {
+    console.log("Error" + err);
     return res.status(500).send(err);
 };
 

@@ -48,6 +48,18 @@ exports.obtenerUsuario = function (req,res) {
 }
 
 
+exports.me = function (req, res,next) {
+    console.log("llame al me");
+    var id = req.usuario._id;
+    usuario.findone({
+        _id:id
+    }, '-salt -hashedPassword', function (err,usuario) {
+        if(err) return next(err);
+        if(!usuario) return res.status(401);
+        res.json(usuario);
+    });
+}
+
 
 function handleError(res, err) {
     return res.status(500).send(err);

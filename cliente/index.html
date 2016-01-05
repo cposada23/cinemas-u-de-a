@@ -42,13 +42,7 @@
           
           <ul class="nav navbar-nav navbar-right">
             <li ng-show="!loggedIn"><a ui-sref="Registro" >Registrarse</a></li>
-            <li ng-show="!loggedIn" class="dropdown">
-              <a ng-click="setTab(2)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Login <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li>email: <input type="text" name="" ng-model="User.email"/></li>
-                <li>Contraseña: <input type="password" name="" ng-model="User.password"/></li>
-                <button ng-click="login()">Login</button>
-              </ul>
+            <li ng-show="!loggedIn"><a ui-sref="Login">Login</a>
             </li>
             <li ng-show="loggedIn">Bienvenido {{nombre}}</li>
             <li ng-show="loggedIn"><a ng-click="logout()"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
@@ -87,13 +81,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
     <!-- uirouter -->
     <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <!-- ngcookies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
+    <!-- resource -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.js"></script>
     
     
+    <!-- app -->
     <script type="text/javascript" src="cliente/app/app.js"></script>
     <script type="text/javascript" src="cliente/app/controladores/navController.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/registroController.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/auth/auth.service.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/auth/usuario.service.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/loginController.js"></script>
     <!--
     <script type="text/javascript" src="cliente/app/controladores/homeCtrl.js"></script>
-    <script type="text/javascript" src="cliente/app/controladores/registroController.js"></script>
+    
     
     <script type="text/javascript" src="cliente/app/controladores/carteleraCtrl.js"></script>
     
@@ -101,6 +104,7 @@
     
     
    -->
+    
     
      
     

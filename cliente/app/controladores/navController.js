@@ -34,15 +34,17 @@
         
         var token = {};
         
-        //login
+        /**  //login
         $http.post('/auth/local', {email: 'q', password:'q'}).success(function (data) {
             console.log("login correcto");
             console.log(JSON.stringify(data));
-            //token = data.token;
+            token = data.token;
             
         }).error(function (error) {
             console.error('fallo' + error);
         });
+        
+        */
         
     }]);
     

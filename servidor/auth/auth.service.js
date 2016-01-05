@@ -4,23 +4,29 @@ var config = require('../config/environment');
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
 var compose = require('composable-middleware');
-var usuario = require('../api/usuario/usuario.modelo');
-var validateJwt = expressJwt({secret: config.secrets.session});
+var us = require('../api/usuario/usuario.modelo');
+var validateJwt = expressJwt({secret:'shhhhhhhh' });
 
 function isAuthenticated() {
     return compose()
     .use(function (req, res, next) {
+        console.log("llame a isAuthenticated" + JSON.stringify(req.body));
         if(req.query && req.query.hasOwnProperty('acces_token')){
+            console.log("lame al if en isAuthenticated");
             req.headers.authorization = 'Bearer ' + req.query.acces_token;
         }
         validateJwt(req, res, next);
     })
     
     .use(function (req,res,next) {
-        usuario.findById(req.usuario._id, function (err , usuario) {
-            if (err) return next(err);
+        us.findById(req.usuario._id, function (err , usuario) {
+            if (err) {
+                console.log("Error en isAuthenticated" + JSON.stringify(err));
+                return next(err);
+                
+            }
             if (!usuario) return res.send(401);
-            
+            console.log("usuario en isauthenticated" + JSON.stringify(usuario));
             req.usuario = usuario;
             next();
         });
@@ -44,8 +50,8 @@ function hasRole(roleRequired) {
 };
 
 // retorna una cookie firmada con el secreto de la app
-function singToken(id, tipo) {
-    return jwt.sign({_id:id, tipo:tipo}, 'shhhhhhhh');
+function singToken(id) {
+    return jwt.sign({_id:id}, 'shhhhhhhh');
 };
 
 function setTokenCookie(req, res) {

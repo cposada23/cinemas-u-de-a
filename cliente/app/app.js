@@ -1,5 +1,5 @@
 (function(){
-    var app = angular.module('cineUdea', ['ui.router']);
+    var app = angular.module('cineUdea', ['ui.router', 'ngCookies' , 'ngResource']);
     //configuracion de la app
     app.config(function($stateProvider, $urlRouterProvider){
         //default
@@ -9,12 +9,17 @@
         .state('Home',{
             url:"/home",
             templateUrl:"cliente/templates/home.html",
-            controller:"homeCtrl"
+            //controller:"homeCtrl"
         })
         .state('Registro',{
             url:"/registro",
             templateUrl: "cliente/templates/registro.html",
             controller:"registroController"
+        })
+        .state('Login',{
+            url:"/login",
+            templateUrl:"cliente/templates/login.html",
+            controller:"loginController"
         })
         /*
         .state('Cartelera',{
@@ -31,3 +36,4 @@
         */
     });
 }());
+

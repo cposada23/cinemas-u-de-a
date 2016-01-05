@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Login</h1>
+            <p>cuenta por defecto es <code>q@q.com</code> contraseña <code>q</code></p>
+        </div>
+        
+        <div class="col-sm-12">
+            <form class="form" name="form" ng-submit="login(form)" novalidate>
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" name="email" class="form-control" ng-model="usuario.email" required/>
+                </div>
+                
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name="password" class="form-control" ng-model="usuario.password" required/>
+                </div>
+                
+                <div class="form-group has-error">
+                    <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
+                        digite su e-mail y contraseña
+                    </p>
+                    
+                    <p class="help-block" ng-show="form.email.$error.email && submitted">
+                        digite un e-mail valido
+                    </p>
+                    
+                    <p class="help-block">{{errors.other}}</p>
+                </div>
+                <div>
+                    <button class="btn btn-inverse btn-lg btn-login" type="submit">Login</button>
+                    <a class="btn btn-default btn-lg btn-register" href="/registro">Registro</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</div>

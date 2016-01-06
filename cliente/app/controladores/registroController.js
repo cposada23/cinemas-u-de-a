@@ -6,6 +6,7 @@
         $scope.errors = {};
         
         $scope.registro = function (form) {
+            
             $scope.enviada = true;
             console.log($scope.usuario.fechaNacimiento);
             console.log(form.$valid);
@@ -35,6 +36,7 @@
                     angular.forEach(err.errors, function (error, field) {
                         form[field].$setValidity('mongoose', false);
                         $scope.errors[field] = error.message;
+                        form[field].$setValidity('mongoose', true);
                     });
                 });
                 

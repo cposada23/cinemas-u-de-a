@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="cliente/css/app.css" type="text/css" />
     
     
-    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
-    <link rel="stylesheet" type="text/css" href="../css/estiloPrincipal.css">
+    <link rel="stylesheet" type="text/css" href="cliente/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="cliente/css/estiloPrincipal.css">
+    <link rel="stylesheet" href="ciente/css/style.css" type="text/css" />
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Maven+Pro:500' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
@@ -38,29 +39,26 @@
             </li>
           </ul>
           
-    
-          
           <ul class="nav navbar-nav navbar-right">
-            <li ng-show="!loggedIn"><a ui-sref="Registro" >Registrarse</a></li>
-            <li ng-show="!loggedIn"><a ui-sref="Login">Login</a>
-            <li ng-show="!loggedIn"><a ng-click="logout()">Logout</a>
-            </li>
-            <li ng-show="loggedIn">Bienvenido {{nombre}}</li>
-            <li ng-show="loggedIn"><a ng-click="logout()"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+            <li ng-hide="isLoggedIn()"><a ui-sref="Registro" >Registrarse</a></li>
+            <li ng-hide="isLoggedIn()"><a ui-sref="Login">Login</a></li>
+            <li ng-show="isLoggedIn()">Bienvenido {{nombre}}</li>
+            <li ng-show="isLoggedIn()"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
           </ul>
         </div>
       </div>
     </nav>
     
-    <div class="jumbotron aa">
-      <div class="container text-center">
-        <h1>Cine U de A</h1>      
-        <p><span class="glyphicon glyphicon-facetime-video"></span> Visita nuestros cines <span class="glyphicon glyphicon-facetime-video"></span></p>
-      </div>
-    </div>
+    
     
     <!-- Para cargar el contenido dinamico -->
-    <div  ui-view class="b"></div>
+    
+    
+    
+    <div class="center-block">
+      <div  ui-view  class="ppal b"></div>
+    </div>
+ 
     
    <!-- <footer class="container-fluid text-center">
       <p>Cinemas U de A</p>  
@@ -70,8 +68,76 @@
       </form>
     </footer>
     -->
+    <footer class="center-block text-center">
+        <div class= "col-md-8">
+            <h1 class="maven-font">Contacto</h1>
+            <p>CineUdeA</p>
+            <p>Teléfonos: 1234567 - 9876543</p>
+            <p>Correo electrónico: cineudea@udea.edu.co</p>
+            <p>Dirección: carrera 123 #33-33</p>
+            <hr width=80% align="center">
+        </div>
+        
+            <div id="contacto">
+
+                <div id="escribeme" class="col-md-6 center-block">
+                    <h2 class="maven-font">Escríbenos</h2>
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput">Nombre</label>
+                                <div class="col-md-4">
+                                    <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" required="">
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="in_e-mail">Email</label>
+                                <div class="col-md-4">
+                                    <input id="in_e-mail" name="in_e-mail" type="text" placeholder="" class="form-control input-md" required="">
+                                </div>
+                            </div>
+
+                            <!-- Textarea -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="in_message"></label>
+                                <div class="col-md-4">
+                                    <textarea class="form-control" id="in_message" name="in_message" required>Mensaje</textarea>
+                                </div>
+                            </div>
+
+                            <!-- Button -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="send_button"></label>
+                                <div class="col-md-4">
+                                    <button id="send_button" name="send_button" class="btn btn-primary">Enviar</button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+                <div id="mapa" class="col-md-6 center-block">
+                    <h2 class="maven-font">Ubicación</h2>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3965.965099311006!2d-75.56749998790337!3d6.268320500404635!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x10cce7ece69b2e2b!2sUniversidad+De+Antioquia!5e0!3m2!1ses-419!2sco!4v1435337292902"
+                    width="400" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <hr width=80% align="center">
+                <div id="social_network">
+                    <a href="htttp://www.facebook.com" target="_blank"><img src="src/social_network/facebook_64.png"></a>
+                    <a href="http://www.twitter.com" target="_blank"><img src="src/social_network/twitter_64.png"></a>
+                    <a href="http://www.instagram.com" target="_blank"><img src="src/social_network/instagram_64.png"></a>
+                </div>
+            </div>
+    </footer>
+    
+    
+    
     
     <!-- script app -->
+    
     
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -95,6 +161,7 @@
     <script type="text/javascript" src="cliente/app/controladores/auth/auth.service.js"></script>
     <script type="text/javascript" src="cliente/app/controladores/auth/usuario.service.js"></script>
     <script type="text/javascript" src="cliente/app/controladores/loginController.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/auth/moongoose-error.directive.js"></script>
     <!--
     <script type="text/javascript" src="cliente/app/controladores/homeCtrl.js"></script>
     
@@ -106,6 +173,22 @@
     
    -->
     
+    <script type="text/javascript" src="cliente/js/jquery.slides.js"></script>
+	<script>
+		$(function(){
+		  $(".slides").slidesjs({
+		    play: {
+		      active: true,		  
+		      effect: "fade",
+		      interval: 3000,
+		      auto: true,
+		      swap: true,
+		      pauseOnHover: false,
+		      restartDelay: 2500
+		    }
+		  });
+		});
+	</script>
     
      
     

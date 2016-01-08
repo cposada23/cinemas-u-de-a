@@ -1,5 +1,5 @@
 (function(){
-    var app = angular.module('cineUdea', ['ui.router', 'ngCookies' , 'ngResource']);
+    var app = angular.module('cineUdea', ['ui.router', 'ngCookies' , 'ngResource', 'angularSpinner']);
     //configuracion de la app
     app.config(function($stateProvider, $urlRouterProvider,  $httpProvider){
         //default
@@ -21,6 +21,7 @@
             url:"/login",
             templateUrl:"cliente/templates/login.html",
             controller:"loginController"
+            
         })
         .state('Cartelera',{
             url:"/cartelera/:cineID/:carteleraID",
@@ -28,12 +29,6 @@
             controller:"carteleraController"
         })
         /*
-        .state('Cartelera',{
-            url:"/cartelera/:cineNombre/:carteleraID",
-            templateUrl: "cliente/templates/cartelera.html",
-            controller:"carteleraCtrl"
-        })
-        
         .state('Pelicula',{
             url:"/pelicula/:peliculaID",
             templateUrl: "cliente/templates/pelicula.html",
@@ -51,10 +46,18 @@
                 }
                 return config;
             }
+            
         };
     });
-    app.run(function ($rootScope, $location, Auth) {
-        $rootScope.$on('$routeChangeStart', function (event, next) {
+    app.run(function ($rootScope, $location, Auth, $state) {
+        // Redirige al login si la ruta require autenticación
+        $rootScope.$on('$stateChangeStart', function (event, next) {
+            Auth.isLoggedInAsync(function (loggedIn) {
+                if(next.authenticate && !loggedIn){
+                    $state.transitionTo("Login");
+                    event.preventDefault();     
+                }
+            });
             
         });
     });

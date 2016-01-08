@@ -41,7 +41,7 @@
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
-            <li ng-hide="isLoggedIn()"><a ui-sref="Registro" >Registrarse</a></li>
+            <li ng-hide="isLoggedIn()"><a href="#registo" ui-sref="Registro" >Registrarse</a></li>
             <li ng-hide="isLoggedIn()"><a ui-sref="Login">Login</a></li>
             <li ng-show="isLoggedIn()"><a href="" >Bienvenido {{usuario.nombres}}</a></li>
             <li ng-show="isLoggedIn()"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
@@ -159,6 +159,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
     <!-- resource -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.js"></script>
+    
+    <!--spiner -->
+    <script type="text/javascript" src="cliente/js/spin.js"></script>
+    <script type="text/javascript" src="cliente/js/angular-spinner.js"></script>
+    
     
     
     <!-- app -->

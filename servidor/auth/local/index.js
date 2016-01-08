@@ -16,11 +16,11 @@ router.post('/' , function (req, res, next) {
         
         
         var token = auth.singToken(usuario._id, usuario.tipo);
-        console.log("token ." + token);
-        u.findByIdAndUpdate(usuario._id, {$set: {barrio:'sirvio en el me ' , token:token}}, function (err, usuario) {
+        
+        u.findByIdAndUpdate(usuario._id, {$set: { token:token}}, function (err, usuario) {
             if (err) console.error(err);
             else{
-                console.log("Usuario en findbyidandupdate. " + usuario);
+                console.log("Update correcto en auth local index");
             }
         });
         

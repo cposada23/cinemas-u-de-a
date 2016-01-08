@@ -30,14 +30,16 @@
                     console.log("Usuario creado");
                     $location.path('/')
                 }).catch(function (err) {
+                    console.log("err" + err);
                     err = err.data;
+                    console.log("eer.data " + JSON.stringify(err));
                     $scope.errors = {};
                     
                     angular.forEach(err.errors, function (error, field) {
                         form[field].$setValidity('mongoose', false);
                         $scope.errors[field] = error.message;
-                        form[field].$setValidity('mongoose', true);
                     });
+                    console.log("Errores "+ JSON.stringify($scope.errors));
                 });
                 
             }

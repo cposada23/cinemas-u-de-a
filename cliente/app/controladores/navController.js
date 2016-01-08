@@ -4,6 +4,8 @@
     app.controller('navController',['$scope','$state','$http','Auth','$location' ,function ($scope,$state,$http,Auth,$location) {
        $scope.isLoggedIn = Auth.isLoggedIn;
        $scope.getCurrentUser= Auth.getCurrentUser;
+       $scope.nombre= Auth.getCurrentUser().nombres;
+       $scope.usuario = Auth.getCurrentUser();
         
         //listar cines
         $http.get('/api/cinema').success(function (cines) {
@@ -14,10 +16,7 @@
             console.error(error);
         });
         
-       
-        
         $scope.logout = function () {
-            console.log("Current user navcontroller" +JSON.stringify( Auth.getCurrentUser()));
             console.log("logg out");
             Auth.logout();
             $location.path('/login');

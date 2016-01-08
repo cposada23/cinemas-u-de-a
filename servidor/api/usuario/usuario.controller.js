@@ -84,7 +84,7 @@ exports.me = function (req, res,next) {
     }, '-salt -hashedPassword -token', function (err,usuario) {
         if(err) return next(err);
         if(!usuario) return res.status(401);
-        console.log("Usuario en el me " + JSON.stringify(usuario));
+        console.log("Todo correcto en el me");
         res.json(usuario);
     });
 }

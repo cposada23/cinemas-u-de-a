@@ -22,6 +22,11 @@
             templateUrl:"cliente/templates/login.html",
             controller:"loginController"
         })
+        .state('Cartelera',{
+            url:"/cartelera/:cineID/:carteleraID",
+            templateUrl:"cliente/templates/cartelera.html",
+            controller:"carteleraController"
+        })
         /*
         .state('Cartelera',{
             url:"/cartelera/:cineNombre/:carteleraID",

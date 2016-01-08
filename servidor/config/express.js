@@ -35,6 +35,7 @@ module.exports = function (app) {
     app.use(cookieParser());
    // app.use('/cliente',express.static('/home/ubuntu/workspace/cliente'));
     app.use('/cliente',express.static(path.join(config.root, '/cliente')));
+    app.use('/public', express.static(path.join(config.root, '/public')));
     app.set('appPath', 'cliente');
     app.use(morgan('dev'));
     app.use(errorHandler());

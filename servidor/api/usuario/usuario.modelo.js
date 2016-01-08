@@ -72,9 +72,27 @@ UserSchema.path('email').validate(function (value, respond) {
     });
 }, 'El email ya esta en uso.');
 
+//Valida que el documento no este registrado
+UserSchema.path('documento').validate(function(value, respond) {
+    var self = this;
+    this.constructor.findOne({documento:value}, function (err, usuario) {
+        if(err)throw err;
+        if(usuario){
+            console.log("usuario encontrado en validate documento");
+            if(self.id===usuario.id){ console.log("entro al if en validate documento"); return respond(true);}
+            return respond(false);
+        }
+        respond(true);
+    });
+}, 'El documento ya esta registrado.');
+
 var validatePresenceOf = function (value) {
     return value && value.length;
 };
+
+
+ 
+  
 
 
 /**

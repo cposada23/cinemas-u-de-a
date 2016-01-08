@@ -23,7 +23,6 @@ angular.module('cineUdea').factory('Auth', function Auth($location, $rootScope, 
                  $cookieStore.put('token', data.token);
                  currentUser = Usuario.get();
                  deferred.resolve(data);
-                 console.log("current User en el auth service ccuando llame el login" + JSON.stringify(currentUser));
                  return cb();
              }).error(function (error) {
                  this.logout();
@@ -37,12 +36,10 @@ angular.module('cineUdea').factory('Auth', function Auth($location, $rootScope, 
           * borra el acces token y la informacion del usuario
           */
         logout: function () {
-            console.log("current user auth.service" + JSON.stringify(currentUser));
             console.log("logotu auth service");
             $cookieStore.remove('token');
             console.log($cookieStore.get('token'));
             currentUser = {};
-            console.log("current user auth.service" + currentUser);
         },
         
         /**

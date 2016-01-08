@@ -7,6 +7,8 @@ module.exports = function (app) {
     //Todas las rutas iran aqui
     app.use('/api/usuario', require('./api/usuario'));
     app.use('/api/cinema', require('./api/cinema'));
+    app.use('/api/pelicula', require('./api/pelicula'));
+    app.use('/api/cartelera', require('./api/cartelera'));
     
     //autenticacion
     app.use('/auth', require('./auth'));
@@ -17,7 +19,7 @@ module.exports = function (app) {
     //--------------------------------
     
     //El resto redirigen al index.html
-    app.route('/*').get(function (req,res) {
+    app.route('/').get(function (req,res) {
         //res.sendfile( '/home/ubuntu/workspace/cliente/index.html
         res.sendFile(path.join(config.root, '/cliente/index.html'));
         //res.sendfile(app.get('appPath') + '/index.html');

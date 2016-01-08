@@ -3,7 +3,7 @@
       <fieldset>
     
         <!-- Form Name -->
-        <legend>Registro</legend>
+        <legend class="text-center">Registro</legend>
     
         <!-- Text input-->
         <div class="form-group" ng-class="{'has-success':form.nombre.$valid && enviada, 'has-error':form.nombre.$invalid && enviada}">
@@ -37,11 +37,12 @@
         </div>
     
         <!-- Text input-->
-        <div class="form-group" ng-class="{'has-success':form.numDoc.$valid && enviada, 'has-error':form.numDoc.$invalid && enviada}">
-          <label class="col-md-4 control-label" for="numDoc">Número de documento</label>
+        <div class="form-group" ng-class="{'has-success':form.documento.$valid && enviada, 'has-error':form.documento.$invalid && enviada}">
+          <label class="col-md-4 control-label" for="documento">Número de documento</label>
           <div class="col-md-6">
-            <input id="numDoc" name="numDoc" type="text" placeholder="Número documento" class="form-control input-md"  ng-model="usuario.documento" required>
-            <p class =" help-block" ng-show="form.numDoc.$error.required && enviada"> El numero de documento es requerido </p>
+            <input id="documento" name="documento" type="text" placeholder="Número documento" class="form-control input-md"  ng-model="usuario.documento" required>
+            <p class =" help-block" ng-show="form.documento.$error.required && enviada"> El numero de documento es requerido </p>
+            <p class="help-block" ng-show="form.documento.$error.mongoose">{{errors.documento}}</p>
           </div>
         </div>
     

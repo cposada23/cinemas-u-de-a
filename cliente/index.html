@@ -4,15 +4,16 @@
     
     <title>Cine Udea</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="cliente/css/app.css" type="text/css" />
+    <!--<link rel="stylesheet" href="cliente/css/app.css" type="text/css" />-->
+    <link rel="stylesheet" href="cliente/css/font-awesome/css/font-awesome.min.css" type="text/css" />
     
-    
-    <link rel="stylesheet" type="text/css" href="cliente/css/fonts.css">
+    <!--<link rel="stylesheet" type="text/css" href="cliente/css/fonts.css">
     <link rel="stylesheet" type="text/css" href="cliente/css/estiloPrincipal.css">
-    <link rel="stylesheet" href="ciente/css/style.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="ciente/css/style.css"  /> -->
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Maven+Pro:500' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="cliente/css/half-slider.css" type="text/css" />
      
   </head>
   
@@ -34,7 +35,7 @@
             <li class="dropdown">
               <a ng-click="setTab(2)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cartelera <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                 <li ng-repeat="cine in cines"><a ui-sref="Cartelera({cineNombre:cine.nombre ,carteleraID:cine.cartelera })">{{cine.nombre}}</a></li>
+                 <li ng-repeat="cine in cines"><a ui-sref="Cartelera({cineID:cine._id ,carteleraID:cine.cartelera})">{{cine.nombre}}</a></li>
               </ul>
             </li>
           </ul>
@@ -42,99 +43,105 @@
           <ul class="nav navbar-nav navbar-right">
             <li ng-hide="isLoggedIn()"><a ui-sref="Registro" >Registrarse</a></li>
             <li ng-hide="isLoggedIn()"><a ui-sref="Login">Login</a></li>
-            <li ng-show="isLoggedIn()">Bienvenido {{nombre}}</li>
+            <li ng-show="isLoggedIn()"><a href="" >Bienvenido {{usuario.nombres}}</a></li>
             <li ng-show="isLoggedIn()"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
           </ul>
         </div>
       </div>
     </nav>
     
+    <header id="myCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></l>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+      
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="fill" style="background-image:url('https://cine-u-de-a-cposada23.c9users.io/public/recursos/imagenes/minions.jpg')"></div>
+              <div class="carousel-caption">
+                  <h2>Minions</h2>
+              </div>
+          </div>
+          
+          <div class="item">
+              <div class="fill" style="background-image:url('https://cine-u-de-a-cposada23.c9users.io/public/recursos/imagenes/dpool.jpg')"></div>
+              <div class="carousel-caption">
+                  <h2>Dead Pool</h2>
+              </div>
+          </div>
+          
+          <div class="item">
+              <div class="fill" style="background-image:url('https://cine-u-de-a-cposada23.c9users.io/public/recursos/imagenes/ultron.jpg')"></div>
+              <div class="carousel-caption">
+                  <h2>Avengers: Age of Ultron</h2>
+              </div>
+          </div>
+          
+          <div class="item">
+              <div class="fill" style="background-image:url('https://cine-u-de-a-cposada23.c9users.io/public/recursos/imagenes/btsp.jpg')"></div>
+              <div class="carousel-caption">
+                  <h2>Batman v Superman</h2>
+              </div>
+          </div>
+      </div>
+      
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="icon-prev"></span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="icon-next"></span>
+      </a>    
+    </header>
+    
     
     
     <!-- Para cargar el contenido dinamico -->
-    
-    
-    
     <div class="center-block">
       <div  ui-view  class="ppal b"></div>
     </div>
  
+    <div class="container">
+      
+      
+    </div>
     
-   <!-- <footer class="container-fluid text-center">
-      <p>Cinemas U de A</p>  
-      <form class="form-inline"><strong>Suscribete: </strong>
-        <input type="email" class="form-control" size="50" placeholder="Email">
-        <button type="button" class="btn btn-danger">Sign Up</button>
-      </form>
+    
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-lg-offset-1 text-center">
+            <h4><strong>Cinemas U de A</strong></h4>
+            <p>Medellin, Antioquia, Colombia</p>
+            <ul class="list-unstyled">
+              <li><i class="fa fa-phone fa-fw"></i> (+57) 219-51-99</li>
+              <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:cineu@example.com">cineudea@udea.edu.co</a></li>
+            </ul>
+            <br>
+            <ul class="list-inline">
+              <li><a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a></li>
+              <li><a href="https://github.com/cposada23/cine"><i class="fa fa-github fa-fw fa-3x"></i></a></li>
+            </ul>
+            <hr class="small">
+            <p class="text-muted">Copyright <code>Cine-U-de-A-2016</code></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+    <!--
+    <footer>
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <p>Copyright <code>Cine U-de-A 2016</code></p>
+          </div>
+        </div>
     </footer>
     -->
-    <footer class="center-block text-center">
-        <div class= "col-md-8">
-            <h1 class="maven-font">Contacto</h1>
-            <p>CineUdeA</p>
-            <p>Teléfonos: 1234567 - 9876543</p>
-            <p>Correo electrónico: cineudea@udea.edu.co</p>
-            <p>Dirección: carrera 123 #33-33</p>
-            <hr width=80% align="center">
-        </div>
-        
-            <div id="contacto">
-
-                <div id="escribeme" class="col-md-6 center-block">
-                    <h2 class="maven-font">Escríbenos</h2>
-                    <form class="form-horizontal">
-                        <fieldset>
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Nombre</label>
-                                <div class="col-md-4">
-                                    <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" required="">
-                                </div>
-                            </div>
-
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="in_e-mail">Email</label>
-                                <div class="col-md-4">
-                                    <input id="in_e-mail" name="in_e-mail" type="text" placeholder="" class="form-control input-md" required="">
-                                </div>
-                            </div>
-
-                            <!-- Textarea -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="in_message"></label>
-                                <div class="col-md-4">
-                                    <textarea class="form-control" id="in_message" name="in_message" required>Mensaje</textarea>
-                                </div>
-                            </div>
-
-                            <!-- Button -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="send_button"></label>
-                                <div class="col-md-4">
-                                    <button id="send_button" name="send_button" class="btn btn-primary">Enviar</button>
-                                </div>
-                            </div>
-
-                        </fieldset>
-                    </form>
-                </div>
-                <div id="mapa" class="col-md-6 center-block">
-                    <h2 class="maven-font">Ubicación</h2>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3965.965099311006!2d-75.56749998790337!3d6.268320500404635!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x10cce7ece69b2e2b!2sUniversidad+De+Antioquia!5e0!3m2!1ses-419!2sco!4v1435337292902"
-                    width="400" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-                <hr width=80% align="center">
-                <div id="social_network">
-                    <a href="htttp://www.facebook.com" target="_blank"><img src="src/social_network/facebook_64.png"></a>
-                    <a href="http://www.twitter.com" target="_blank"><img src="src/social_network/twitter_64.png"></a>
-                    <a href="http://www.instagram.com" target="_blank"><img src="src/social_network/instagram_64.png"></a>
-                </div>
-            </div>
-    </footer>
-    
-    
-    
     
     <!-- script app -->
     
@@ -162,6 +169,7 @@
     <script type="text/javascript" src="cliente/app/controladores/auth/usuario.service.js"></script>
     <script type="text/javascript" src="cliente/app/controladores/loginController.js"></script>
     <script type="text/javascript" src="cliente/app/controladores/auth/moongoose-error.directive.js"></script>
+    <script type="text/javascript" src="Cliente/app/controladores/carteleraController.js"></script>
     <!--
     <script type="text/javascript" src="cliente/app/controladores/homeCtrl.js"></script>
     
@@ -174,7 +182,7 @@
    -->
     
     <script type="text/javascript" src="cliente/js/jquery.slides.js"></script>
-	<script>
+<!--<script>
 		$(function(){
 		  $(".slides").slidesjs({
 		    play: {
@@ -188,6 +196,11 @@
 		    }
 		  });
 		});
+	</script>-->
+	<script >
+	  $('.carousel').carousel({
+      interval:5000	  
+	  })
 	</script>
     
      

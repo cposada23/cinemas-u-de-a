@@ -9,19 +9,22 @@
             <form class="form" name="form" ng-submit="login(form)" novalidate>
                 <fieldset>
                 
-                <div class="input-group margin-bottom-sm">
+                <div class="input-group margin-bottom-sm" ng-class="{'has-success':form.email.$valid && enviada, 'has-error':form.email.$invalid &&submitted}">
                   <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-                  <input class="form-control" type="email" placeholder="Email address" ng-model="usuario.email" required>
+                  <input class="form-control" type="email" name="email" placeholder="Email address" ng-model="usuario.email" required>
                 </div>
                 <br>
-                <div class="input-group">
+                <div class="input-group" ng-class="{'has-success':form.password.$valid && enviada, 'has-error':form.password.$invalid &&submitted}">
                   <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-                  <input class="form-control" type="password" placeholder="Password" ng-model="usuario.password" required>
+                  <input class="form-control" type="password" name="password" placeholder="Password" ng-model="usuario.password" required>
                 </div>
                 <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
                 
                 <div class="form-group has-error">
                     <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
+                        digite su e-mail y contraseña
+                    </p>
+                    <p class="help-block" ng-show="form.password.$error.required &&  submitted">
                         digite su e-mail y contraseña
                     </p>
                     

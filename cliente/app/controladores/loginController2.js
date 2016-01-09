@@ -28,6 +28,8 @@
                     usSpinnerService.stop('spinner-1');
                     $scope.errors.other = err.message;
                 });
+            }else{
+                usSpinnerService.stop('spinner-1');
             }
         };
         

@@ -10,7 +10,7 @@ var jwt = require('jsonwebtoken');
  */
 
 exports.create = function (req,res) {
-    console.log(JSON.stringify(req.body));
+    console.log("usuario en create: " + JSON.stringify(req.body));
     var newUser = req.body;
     
     console.log("Usuario en create" + JSON.stringify(newUser));

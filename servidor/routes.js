@@ -10,6 +10,10 @@ module.exports = function (app) {
     app.use('/api/pelicula', require('./api/pelicula'));
     app.use('/api/cartelera', require('./api/cartelera'));
     
+    //Rutas que se pueden borrar
+    app.use('/api/sala', require('./api/sala'));
+    app.use('/api/silla' , require('./api/silla'));
+    
     //autenticacion
     app.use('/auth', require('./auth'));
     //--------------------------------

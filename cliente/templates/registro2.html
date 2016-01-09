@@ -34,9 +34,9 @@
           <label class="col-md-4 control-label" for="tipoDoc">Tipo de documento</label>
           <div class="col-md-6">
             <select id="tipoDoc" name="tipoDoc" class="form-control"  ng-model="usuario.tipoDoc" required>
-              <option value="1">CC</option>
-              <option value="2">TI</option>
-              <option value="3">CE</option>
+              <option value="CC">CC</option>
+              <option value="TI">TI</option>
+              <option value="CE">CE</option>
             </select>
           </div>
           <p class =" help-block" ng-show="form.tipoDoc.$error.required && enviada"> El tipo de documento es requerido </p>
@@ -66,8 +66,8 @@
           <label class="col-md-4 control-label" for="genero">Género</label>
           <div class="col-md-6">
             <select id="genero" name="genero" class="form-control" ng-model="usuario.sexo" required>
-              <option value="1">Femenino</option>
-              <option value="2">Masculino</option>
+              <option value="Femenino">Femenino</option>
+              <option value="Masculino">Masculino</option>
             </select>
           </div>
           <p class =" help-block" ng-show="form.genero.$error.required && enviada"> CUal es tu genero? </p>
@@ -129,17 +129,17 @@
           <label class="col-md-4 control-label" for="generoFavorito">Genéro de película favorito</label>
           <div class="col-md-6">
             <select id="generoFavorito" name="generoFavorito" class="form-control" ng-model="usuario.generoPelicula" required>
-              <option value="1">Acción</option>
-              <option value="2">Drama</option>
-              <option value="3">Comedia</option>
-              <option value="4">Fantasía</option>
-              <option value="5">Terror</option>
-              <option value="6">Suspenso</option>
+              <option value="Accion">Acción</option>
+              <option value="Drama">Drama</option>
+              <option value="Comedia">Comedia</option>
+              <option value="Fantasia">Fantasía</option>
+              <option value="Terror">Terror</option>
+              <option value="Suspeso">Suspenso</option>
             </select>
           </div>
           <p class =" help-block" ng-show="form.generoFavorito.$error.required && enviada"> Dinos tu genero favorito para recomendarte peliculas de tu preferencia </p>
         </div>
-        
+        <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
     
         <!-- Button -->
         

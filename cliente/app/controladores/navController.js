@@ -1,12 +1,10 @@
 (function () {
     var app = angular.module('cineUdea');
     
-    app.controller('navController',['$scope','$state','$http','Auth','$location' ,function ($scope,$state,$http,Auth,$location) {
+    app.controller('navController',['$scope','$state','$http','Auth','$location','registroModal' ,'loginModal',function ($scope,$state,$http,Auth,$location, registroModal,loginModal) {
        $scope.isLoggedIn = Auth.isLoggedIn;
        $scope.getCurrentUser= Auth.getCurrentUser;
-       $scope.nombre= Auth.getCurrentUser().nombres;
-       $scope.usuario = Auth.getCurrentUser();
-        
+     
         //listar cines
         $http.get('/api/cinema').success(function (cines) {
             console.log("correcto");
@@ -19,8 +17,17 @@
         $scope.logout = function () {
             console.log("logg out");
             Auth.logout();
-            $location.path('/login');
-        }
+            $location.path('/');
+        };
+        
+        $scope.registro = function () {
+            registroModal();
+        };
+        
+        
+        $scope.login=function () {
+            loginModal();
+        };
         
     }]);
     

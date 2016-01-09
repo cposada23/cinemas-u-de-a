@@ -26,7 +26,7 @@ exports.create = function (req,res) {
             usuario.findByIdAndUpdate(user._id, {$set: {token:token}}, function (err, usuario) {
                 if (err) return handleError(res,err);
                 else{
-                    console.log("Usuario ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿´+uiiiiiiiiiiiiiiiiiiiiiiiiiactualizado en create. " + usuario);
+                    console.log("Usuario actualizado en create. " + usuario);
                     console.log("creado");
                     res.status(200).json({token:token});
                 }

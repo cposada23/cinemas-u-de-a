@@ -1,2 +1,5 @@
 <h1>Cartelera</h1>
-{{cartelera}}
+
+<div ng-repeat="pelicula in peliculas">
+    <h3><a ui-sref="Pelicula({peliculaID : pelicula.idPelicula})">{{pelicula.nombrePelicula}}</a></h3>    
+</div>

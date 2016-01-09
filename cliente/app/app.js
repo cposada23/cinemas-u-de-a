@@ -1,5 +1,5 @@
 (function(){
-    var app = angular.module('cineUdea', ['ui.router', 'ngCookies' , 'ngResource', 'angularSpinner']);
+    var app = angular.module('cineUdea', ['ui.router', 'ngCookies' , 'ngResource', 'angularSpinner','ngAnimate', 'ui.bootstrap']);
     //configuracion de la app
     app.config(function($stateProvider, $urlRouterProvider,  $httpProvider){
         //default
@@ -28,13 +28,13 @@
             templateUrl:"cliente/templates/cartelera.html",
             controller:"carteleraController"
         })
-        /*
+    
         .state('Pelicula',{
             url:"/pelicula/:peliculaID",
             templateUrl: "cliente/templates/pelicula.html",
             controller:"peliculaController"
         });
-        */
+        
     });
     
     app.factory('authInterceptor' , function ($rootScope,$q,$cookieStore , $location) {
@@ -49,13 +49,24 @@
             
         };
     });
-    app.run(function ($rootScope, $location, Auth, $state) {
+    app.run(function ($rootScope, $location, Auth, $state, loginModal) {
         // Redirige al login si la ruta require autenticación
-        $rootScope.$on('$stateChangeStart', function (event, next) {
+        $rootScope.$on('$stateChangeStart', function (event, next , toParams) {
             Auth.isLoggedInAsync(function (loggedIn) {
                 if(next.authenticate && !loggedIn){
-                    $state.transitionTo("Login");
-                    event.preventDefault();     
+                    //$state.transitionTo("Login");
+                    event.preventDefault();   
+                    
+                    loginModal().then(function () {
+                        console.log("por el then");
+                        console.log("to params" + toParams)
+                        return $state.go(next.name, toParams);
+                    }).catch(function () {
+                        console.log("por el catch")
+                        //return $state.go('Home');
+                    });
+                    
+                    
                 }
             });
             

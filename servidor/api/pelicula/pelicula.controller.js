@@ -15,6 +15,38 @@ exports.peliculas = function (req, res) {
 };
 
 /**
+ * Obtener una pelicula por su id
+ */
+
+exports.pelicula= function (req,res) {
+    peliculas.findOne({_id :req.params.id}, function (err, pelicula) {
+        if (err) return handleError(res, err);
+        return res.status(200).json(pelicula);
+    });
+}
+
+
+
+/**
+ * Añade un comentario a una pelicula
+ */
+exports.comentar=function (req,res) {
+    console.log(JSON.stringify(req.body));
+    peliculas.findOne({_id:req.body.id}, function(err, pelicula) {
+        if(err)return handleError(res, err);
+        pelicula.comentarios.push(req.body.comentario);
+        pelicula.save(function (err, pelicula) {
+            if(err)return handleError(res,err);
+            console.log("guardada exitosamente");
+            return res.status(200).json({s:'s'});
+        })
+        
+    })
+    
+};
+
+
+/**
  * creacion de peliculas
  */
 exports.create = function (req,res) {

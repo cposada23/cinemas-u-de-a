@@ -41,9 +41,11 @@
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
-            <li ng-hide="isLoggedIn()"><a href="#registo" ui-sref="Registro" >Registrarse</a></li>
-            <li ng-hide="isLoggedIn()"><a ui-sref="Login">Login</a></li>
-            <li ng-show="isLoggedIn()"><a href="" >Bienvenido {{usuario.nombres}}</a></li>
+            <!--<li ng-hide="isLoggedIn()"><a href="#registo" ui-sref="Registro" >Registrarse</a></li>-->
+            <li ng-hide="isLoggedIn()"><a href="" ng-click="registro()" >Registrarse</a></li>
+            <!--<li ng-hide="isLoggedIn()"><a ui-sref="Login">Login</a></li>-->
+            <li ng-hide="isLoggedIn()"><a href="" ng-click="login()">Login</a></li>
+            <li ng-show="isLoggedIn()"><a href="" >Bienvenido {{getCurrentUser().nombres}}</a></li>
             <li ng-show="isLoggedIn()"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
           </ul>
         </div>
@@ -133,17 +135,9 @@
     </footer>
     
     
-    <!--
-    <footer>
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <p>Copyright <code>Cine U-de-A 2016</code></p>
-          </div>
-        </div>
-    </footer>
-    -->
+   
     
-    <!-- script app -->
+   
     
     
     <!-- jquery -->
@@ -153,18 +147,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <!-- angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+    <!-- angular animate -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
     <!-- uirouter -->
     <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
     <!-- ngcookies -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
     <!-- resource -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.js"></script>
+    <!-- ui-bootstrap -->
+    <script type="text/javascript" src="cliente/js/ui-bootstrap-tpls-1.0.0.min.js"></script>
     
     <!--spiner -->
     <script type="text/javascript" src="cliente/js/spin.js"></script>
     <script type="text/javascript" src="cliente/js/angular-spinner.js"></script>
     
-    
+    <!-- script app -->
     
     <!-- app -->
     <script type="text/javascript" src="cliente/app/app.js"></script>
@@ -175,36 +173,21 @@
     <script type="text/javascript" src="cliente/app/controladores/loginController.js"></script>
     <script type="text/javascript" src="cliente/app/controladores/auth/moongoose-error.directive.js"></script>
     <script type="text/javascript" src="Cliente/app/controladores/carteleraController.js"></script>
-    <!--
-    <script type="text/javascript" src="cliente/app/controladores/homeCtrl.js"></script>
-    
-    
-    <script type="text/javascript" src="cliente/app/controladores/carteleraCtrl.js"></script>
-    
     <script type="text/javascript" src="cliente/app/controladores/peliculaController.js"></script>
     
+    <script type="text/javascript" src="cliente/app/controladores/registroController2.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/loginController2.js"></script>
     
-   -->
+    <!--Modals-->
+    <script type="text/javascript" src="cliente/app/controladores/modal/registroModal.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/modal/loginModal.js"></script>
+  
     
     <script type="text/javascript" src="cliente/js/jquery.slides.js"></script>
-<!--<script>
-		$(function(){
-		  $(".slides").slidesjs({
-		    play: {
-		      active: true,		  
-		      effect: "fade",
-		      interval: 3000,
-		      auto: true,
-		      swap: true,
-		      pauseOnHover: false,
-		      restartDelay: 2500
-		    }
-		  });
-		});
-	</script>-->
+
 	<script >
 	  $('.carousel').carousel({
-      interval:5000	  
+      interval:3000	  
 	  })
 	</script>
     

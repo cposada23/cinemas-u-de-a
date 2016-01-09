@@ -1,0 +1,34 @@
+<h1>Pelicula</h1>
+{{pelicula}}
+
+<div class="container">
+    <h1>Comentarios de {{pelicula.nombre}}</h1>
+    <div class="row" ng-repeat="comentario in pelicula.comentarios">
+        <h3><strong>{{comentario.autor}}:</strong>{{ comentario.texto}}  en {{comentario.fecha}}</h3>
+    </div>
+    
+    <div class="row" ng-show="isLoggedIn()">
+        <form name="form" ng-submit="form.$valid && addComentario(form)" novalidate>
+            <blockquote>
+                Por: <strong>{{getCurrentUser().nombres }}</strong>
+                {{nuevoComentario}}
+            </blockquote>
+            
+            <h2>Enviar un comentario</h2>
+            <fieldset class="form-group">
+                <textarea class="form-controll" placeholder="Escribe un comentario" ng-model="nuevoComentario" required></textarea>
+            </fieldset>
+            
+            
+            
+            <fieldset class="form-group">
+                <button class="btn btn-inverse btn-lg btn-logic" type="submit">Comentar</button>
+            </fieldset>
+        </form>
+    </div>
+    
+    <div class="row" ng-hide="isLoggedIn()">
+        <h1>Para comentar se necesita estar logueado</h1>
+        <button class="btn btn-inverse btn-lg btn-login" ng-click="login()">Login</button>
+    </div>
+</div>

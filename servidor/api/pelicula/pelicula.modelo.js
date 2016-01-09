@@ -19,7 +19,8 @@ var PeliculaSchema = new Schema({
     comentarios:[{
         texto: String,
         fecha: {type:Date , default: Date.now},
-        autor: String
+        autor: String,
+        autorID:String
     }]
 });
 

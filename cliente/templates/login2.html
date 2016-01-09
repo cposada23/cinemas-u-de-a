@@ -1,0 +1,43 @@
+<div class="col-sm-8 col-sm-offset-2" style="background-color: white;">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h1>Login</h1>
+            <p>cuenta por defecto es <code>q@q.com</code> contraseña <code>q</code></p>
+        </div>
+        
+        <div class="col-lg-8 col-lg-offset-2">
+            <form class="form" name="form" ng-submit="login(form)" novalidate>
+                <fieldset>
+                
+                <div class="input-group margin-bottom-sm">
+                  <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                  <input class="form-control" type="email" placeholder="Email address" ng-model="usuario.email" required>
+                </div>
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                  <input class="form-control" type="password" placeholder="Password" ng-model="usuario.password" required>
+                </div>
+                <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
+                
+                <div class="form-group has-error">
+                    <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
+                        digite su e-mail y contraseña
+                    </p>
+                    
+                    <p class="help-block" ng-show="form.email.$error.email && submitted">
+                        digite un e-mail valido
+                    </p>
+                    
+                    <p class="help-block">{{errors.other}}</p>
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-inverse btn-lg btn-login" type="submit">Login</button>
+                    <a class="btn btn-default btn-lg btn-register" ng-click="registro()" >Registro</a>
+                </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    
+</div>

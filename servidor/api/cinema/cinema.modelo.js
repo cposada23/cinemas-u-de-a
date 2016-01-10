@@ -6,7 +6,8 @@ var CinemaSchema = new Schema({
     nombre: String,
     direccion:String,
     municipio:String,
-    cartelera:String
+    cartelera:String,
+    programacionActual: [{type: Schema.Types.ObjectId, ref:'programaciones'}]
 });
 
 

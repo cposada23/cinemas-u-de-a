@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var PrecioSchema = new Schema({
     descripcion: String,
-    localidad: String,
+    localidad: {type:String, lowercase:true},
     formato:String,
     precioDinero: Number,
     precioPuntos:Number,

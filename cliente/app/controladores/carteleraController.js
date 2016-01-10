@@ -15,7 +15,7 @@
            console.log("peliculas" + JSON.stringify($scope.peliculas));
            console.log("correcto");
        }).error(function (error) {
-           console.error("fallo" + error);
+           console.error("fallo" + JSON.stringify(error));
        });
        
         

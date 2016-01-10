@@ -7,7 +7,7 @@ var SillaSchema = new Schema({
    fila:String,
    numero: Number,
    sala:{type: Schema.Types.ObjectId , ref:'salas'},
-   localidad:{type:String, default:"General"}
+   localidad:{type:String, default:"general"}
 });
 
 

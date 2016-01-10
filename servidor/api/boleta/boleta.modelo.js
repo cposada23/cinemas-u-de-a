@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var BoletaSchema = new Schema({
+    usuario:String,
     reserva:Boolean,
     qr: String,
     sillaReservada: Boolean,

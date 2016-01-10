@@ -16,7 +16,7 @@ exports.cartelera = function (req,res) {
     var idCine = req.params.idcine;
     carteleras.findOne({cineId:idCine, _id:idCartelera} ,function (err,cartelera) {
         if (err){return handleError(res,err);}
-        if (cartelera.length===0){return res.status(404).json({err:'Cartelera no encontrada'});}
+        if (cartelera===null){return res.status(404).json({err:'Cartelera no encontrada'});}
         return res.status(200).json(cartelera);
         
     });

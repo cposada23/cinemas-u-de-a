@@ -31,7 +31,7 @@ module.exports = function (app) {
     app.use(compression());
     app.use(bodyParser.urlencoded({extended:false}));
     app.use(bodyParser.json());
-    app.use(methodOverride());
+    app.use(methodOverride()); //soporte para HTTP PUT y DELETE 
     app.use(cookieParser());
    // app.use('/cliente',express.static('/home/ubuntu/workspace/cliente'));
     app.use('/cliente',express.static(path.join(config.root, '/cliente')));

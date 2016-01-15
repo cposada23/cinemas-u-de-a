@@ -1,12 +1,13 @@
 (function () {
     var app = angular.module('cineUdea');
     
-    app.controller('carteleraController',['$scope','$state','$http','Auth','$location','$stateParams' ,function ($scope,$state,$http,Auth,$location,$stateParams) {
+    app.controller('carteleraController',['$scope','$state','$http','Auth','$location','$stateParams','$rootScope' ,function ($scope,$state,$http,Auth,$location,$stateParams, $rootScope) {
        $scope.cartelera={};
        $scope.peliculas=[];
        $scope.currentUser= Auth.getCurrentUser;
        $scope.cineid= $stateParams.cineID;
        $scope.carteleraid = $stateParams.carteleraID;
+       
        
        $http.get('/api/cartelera/'+$scope.cineid+"/"+$scope.carteleraid).success(function (cartelera) {
            $scope.cartelera= cartelera;

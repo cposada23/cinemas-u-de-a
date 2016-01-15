@@ -1,7 +1,10 @@
 'use strict';
 
 var peliculas = require('./pelicula.modelo');
-
+var cinemas = require('../cinema/cinema.modelo');
+var funciones = require('../funcion/funcion.modelo');
+var async = require('async');
+var salas = require('../sala/sala.modelo');
 
 /**
  * Obtener todas las peliculas
@@ -43,6 +46,44 @@ exports.comentar=function (req,res) {
         
     })
     
+};
+
+
+exports.listarHorarios = function (req, res) {
+    var idPelicula = req.params.idPelicula;
+    cinemas.findOne({_id:req.params.idCine}).populate({
+        path:'programacionActual', 
+        populate:{path: 'funciones', model: 'funciones'},
+    }).exec(function (err, cinema) {
+        if(err)return handleError(res, err);
+        var programacion;
+        var funcion;
+        var respuesta ={funciones:[]};
+        var f = {};
+        for (var i in cinema.programacionActual) {
+            programacion = cinema.programacionActual[i];
+            for (var j in programacion.funciones) {
+                funcion = programacion.funciones[j];
+                if(funcion.pelicula==idPelicula){
+                    f.sala = programacion.sala;
+                    f.idFuncion = funcion.id;
+                    f.horaFuncion = funcion.hora;
+                    respuesta.funciones.push(f);
+                    f ={};
+                }
+            }
+        }
+        var response ={funciones:[]};
+        async.forEach(respuesta.funciones, function (funcion, callback) {
+            salas.findOne({_id:funcion.sala}, function(err, sala) {
+                response.funciones.push({idFuncion: funcion.idFuncion, horaFuncion:funcion.horaFuncion, sala: "Sala "+sala.numero});
+                callback();
+            });
+        }, function (err) {
+            if(err) return handleError(res, err);
+            return res.status(200).json(response);
+        });
+    });
 };
 
 

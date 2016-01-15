@@ -32,7 +32,14 @@
         .state('Pelicula',{
             url:"/pelicula/:peliculaID",
             templateUrl: "cliente/templates/pelicula.html",
-            controller:"peliculaController"
+            controller:"peliculaController",
+            
+        })
+        .state('Reserva',{
+            url:"/reserva/:funcionID",
+            templateUrl:"cliente/templates/reserva.html",
+            controller:"reservaController",
+            authenticate:true
         });
         
     });

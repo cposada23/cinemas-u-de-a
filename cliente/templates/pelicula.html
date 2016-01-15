@@ -2,11 +2,16 @@
 {{pelicula}}
 
 <div class="container">
+    <h2>Horarios</h2>
+    <div class="row" ng-repeat="funcion in funciones">
+        <h3>{{funcion.sala }}: {{funcion.horaFuncion }} <a class="btn btn-default btn-lg btn-register" ui-sref="Reserva({funcionID:funcion.idFuncion})">Reservar</a></h3> 
+    </div>
+    
     <h1>Comentarios de {{pelicula.nombre}}</h1>
     <div class="row" ng-repeat="comentario in pelicula.comentarios">
         <h3><strong>{{comentario.autor}}:</strong>{{ comentario.texto}}  en {{comentario.fecha}}</h3>
     </div>
-    
+   
     <div class="row" ng-show="isLoggedIn()">
         <form name="form" ng-submit="form.$valid && addComentario(form)" novalidate>
             <blockquote>

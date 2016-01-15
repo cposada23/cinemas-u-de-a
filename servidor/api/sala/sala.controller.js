@@ -13,6 +13,16 @@ exports.salas = function (req,res) {
     })
 };
 
+exports.sala= function (req, res) {
+    salas.findOne({_id:req.params.id}).populate('sillas').exec(function (err,sala) {
+        if(err) return handleError(res, err);
+        return res.status(200).json(sala);
+    });
+};
+
+
+
+
 /**
  * crear de salas
  */

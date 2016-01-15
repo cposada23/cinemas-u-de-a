@@ -9,10 +9,12 @@ module.exports = function (app) {
     app.use('/api/cinema', require('./api/cinema'));
     app.use('/api/pelicula', require('./api/pelicula'));
     app.use('/api/cartelera', require('./api/cartelera'));
+    app.use('/api/funcion', require('./api/funcion'));
     
     //Rutas que se pueden borrar
     app.use('/api/sala', require('./api/sala'));
     app.use('/api/silla' , require('./api/silla'));
+    app.use('/api/programacion', require('./api/programacion'));
     
     //autenticacion
     app.use('/auth', require('./auth'));

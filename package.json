@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/cposada23/cine#readme",
   "dependencies": {
+    "async": "^1.5.2",
     "body-parser": "^1.14.2",
     "composable-middleware": "^0.3.0",
     "compression": "^1.6.0",

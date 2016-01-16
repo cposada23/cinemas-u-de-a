@@ -39,6 +39,39 @@ exports.reservar = function (req, res,next) {
    
 };
 
+/**
+ * cancelar la reserva de una boleta
+ */
+exports.cancelar = function (req, res, next)   {
+    console.log("cancelar");
+    var token = req.token;
+    var id = req.body.boleta;
+    usuarios.findOne({
+        token:token
+    }, '-salt -hashedPassword -token', function (err,usuario) {
+        if(err) return next(err);
+        if(!usuario) return res.status(401);
+        console.log("Todo correcto encontre el usuario en cancelar");
+        boletas.findOne({_id:id,usuario: usuario._id}, function (err, boleta) {
+            if (err)return handleError(err);
+            else if(boleta!=undefined){
+                boleta.sillaReservada = false;
+                boleta.usuario = "";
+                boleta.qr = "";
+                console.log("Boleta en cancelar " + JSON.stringify(boleta));
+                boleta.save(function (err, boleta) {
+                    if(err)return handleError(res, err);
+                    console.log("Boleta cancelada");
+                    console.log("boleta" + JSON.stringify(boleta));
+                    return res.status(200).json({todo:'correcto'});
+                });
+            }
+            else{
+                res.status(404).json({todo:'mal'});
+            }
+        });
+    });
+};
 
 exports.misBoletas = function (req, res, next) {
     console.log("llame a mis boletas");

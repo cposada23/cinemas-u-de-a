@@ -13,7 +13,7 @@
             $scope.reserva = [];
             $scope.sala = {
                filas:[]
-           }
+            }
             $http.get('/api/funcion/'+$scope.idFuncion).success(function (funcion) {
                 $scope.funcion = funcion;
                 $scope.boletas = funcion.boletas;
@@ -48,11 +48,10 @@
                     x++;
                     i--;
                 }
-           }).error(function (error) {
-               console.error(error);
-           });
-           
-        }
+            }).error(function (error) {
+                console.error(error);
+            });
+        };
        
         $scope.llenarDatos();
         $scope.addBoleta = function (id, x, y) {
@@ -79,7 +78,7 @@
                console.log("anadiendo la reserva");
                $scope.addBoleta(id, x, y);
            }
-        }
+        };
        
         
         $scope.reservar = function () {
@@ -91,15 +90,34 @@
                    console.error("error" + error);
                })
             }else{
-               alert("No ha seleccionado ninguna silla ")
+               alert("No ha seleccionado ninguna silla ");
             }
-        }
+        };
+        
+        
+        
+        
         $scope.reservas;
+        
+        $scope.cancelarReserva = function (id) {
+            console.log("cancelando "+ id);
+            
+            $http.post('/api/boleta/cancelar', {boleta: id}).success(function (response) {
+                console.log("cancelad " +  JSON.stringify(response));
+                var i = $scope.reservas.indexOf(id);
+                console.log("i "+ i);
+                console.log("reservas[i-1] " + $scope.reservas[i-1]);
+                $scope.reservas.splice(i-1,1);
+                $scope.llenarDatos();
+            }).error(function(error) {
+                console.log("Error " +JSON.stringify(error) );
+            });
+        };
         
         $scope.misReservas = function () {
             $http.get('/api/boleta/misBoletas/'+$scope.idFuncion).success(function(reservas) {
                 if(reservas.length!=0){
-                $scope.reservas = reservas;
+                    $scope.reservas = reservas;
                 }else{
                     $scope.reservas = "No tiene reservas para esta función";
                 }

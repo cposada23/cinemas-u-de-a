@@ -52,7 +52,7 @@
                       <td >  {{reserva.silla.fila}}-{{reserva.silla.numero}}</td>
                       <td >  {{reserva.silla.localidad}}</td>
                       <td >{{funcion.hora}} </td>
-                      <td > <button class="btn btn-danger">cancelar</button></td>
+                      <td > <button class="btn btn-danger" ng-click="cancelarReserva(reserva._id)">cancelar</button></td>
                     </tr>
                 </tbody>
             </table>

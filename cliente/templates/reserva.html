@@ -1,7 +1,3 @@
-<h1>Reserva para la funcion:</h1>
-{{funcion}}
-<h1>Boletas</h1>
-{{boletas}}
 
 <h1>Sala</h1>
 
@@ -35,9 +31,31 @@
 
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 text-center">
-            <button ng-click="misReservas()">mis reservas</button>
+            <button ng-click="misReservas()">mis reservas para esta funcion</button>
             <h1>Mis Reserva</h1>
-            <p class="text-center">{{reservas}}</p>
+            <p>{{reservas}}</p>
+            
+            
+        </div>
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+            <table class="table table-striped" style="margin: 0 auto;">
+                <thead>
+                    <tr>
+                        <td>Silla</td>
+                        <td>Localidad</td>
+                        <td>Hora</td>
+                        <td>cancelar?</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  ng-repeat="reserva in reservas">
+                      <td >  {{reserva.silla.fila}}-{{reserva.silla.numero}}</td>
+                      <td >  {{reserva.silla.localidad}}</td>
+                      <td >{{funcion.hora}} </td>
+                      <td > <button class="btn btn-danger">cancelar</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     

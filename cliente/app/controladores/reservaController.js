@@ -27,7 +27,7 @@
                     if($scope.boletas[i].silla!==undefined){
                         while ($scope.boletas[i].silla.fila === f){
                             console.log(i);
-                            silla.pos = $scope.boletas[i].silla.fila + $scope.boletas[i].silla.numero.toString();
+                            silla.pos = $scope.boletas[i].silla.fila +"-"+ $scope.boletas[i].silla.numero.toString();
                             silla.reservada = $scope.boletas[i].sillaReservada;
                             silla.boleta = $scope.boletas[i]._id;
                             silla.boletaReservada = $scope.boletas[i].sillaReservada;
@@ -48,13 +48,11 @@
                     x++;
                     i--;
                 }
-               
-               
            }).error(function (error) {
                console.error(error);
            });
            
-       }
+        }
        
         $scope.llenarDatos();
         $scope.addBoleta = function (id, x, y) {
@@ -88,7 +86,7 @@
             if ($scope.reserva.length!= 0){
                $http.post('/api/boleta/reservar', {reserva: $scope.reserva}).success(function (reserva) {
                    console.log("Reserva "+ JSON.stringify(reserva));
-                   //$scope.llenarDatos();
+                   $scope.llenarDatos();
                }).error(function (error) {
                    console.error("error" + error);
                })
@@ -99,8 +97,12 @@
         $scope.reservas;
         
         $scope.misReservas = function () {
-            $http.get('/api/boleta/misBoletas').success(function(reservas) {
+            $http.get('/api/boleta/misBoletas/'+$scope.idFuncion).success(function(reservas) {
+                if(reservas.length!=0){
                 $scope.reservas = reservas;
+                }else{
+                    $scope.reservas = "No tiene reservas para esta función";
+                }
                 console.log("mis reservas");
             }).error(function(error) {
                 console.error(error);

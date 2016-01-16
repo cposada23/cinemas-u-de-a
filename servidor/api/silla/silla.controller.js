@@ -12,7 +12,11 @@ exports.sillas = function (req,res) {
     });
 };
 
-
+exports.silla = function (req,res) {
+    sillas.find({_id: req.params.id}, function(err, silla) {
+        return res.status(200).json(silla);  
+    });
+};
 
 function handleError(res, err) {
     return res.status(500).send(err);

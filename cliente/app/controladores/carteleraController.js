@@ -7,6 +7,7 @@
        $scope.currentUser= Auth.getCurrentUser;
        $scope.cineid= $stateParams.cineID;
        $scope.carteleraid = $stateParams.carteleraID;
+       localStorage.setItem('cineid', $stateParams.cineID);
        
        
        $http.get('/api/cartelera/'+$scope.cineid+"/"+$scope.carteleraid).success(function (cartelera) {

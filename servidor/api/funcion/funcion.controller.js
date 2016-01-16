@@ -12,7 +12,10 @@ var funciones = require('../funcion/funcion.modelo');
 exports.funcion= function (req,res) {
     
     
-    funciones.findOne({_id :req.params.id}).populate('boletas').exec(function (err, funcion) {
+    funciones.findOne({_id :req.params.id}).populate({
+        path:'boletas',
+        populate:{path: 'silla', model:'sillas'}
+    }).exec(function (err, funcion) {
         if(err) return handleError(res, err);
         return res.status(200).json(funcion);
     });

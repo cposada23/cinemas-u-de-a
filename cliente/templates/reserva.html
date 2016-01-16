@@ -1,4 +1,50 @@
 <h1>Reserva para la funcion:</h1>
 {{funcion}}
+<h1>Boletas</h1>
+{{boletas}}
 
-<button ng-click="abrir()">abrir</button>
+<h1>Sala</h1>
+
+{{sala}}
+
+<div class="col-sm-8 col-sm-offset-2">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h3>pantalla</h3>
+            <table border="3" style="margin: 0 auto;">
+                
+                <tbody>
+                    <tr ng-repeat="fila in sala.filas">
+                      <td ng-repeat="silla in fila.sillas"><button  ng-class="{'btn btn-primary':!silla.reservada, 'btn btn-danger':silla.boletaReservada, 'btn btn-warning':silla.reservada}" 
+                                                            ng-disabled="{{silla.reservada}}" ng-click="addrem(silla.boleta,silla.x, silla.y, silla.reservada)">silla {{silla.pos}}</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+        
+        
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+            <button class="btn btn-inverse btn-lg btn-login" ng-click="reservar()">reservar</button>
+        </div>
+    </div
+     
+
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+            <button ng-click="misReservas()">mis reservas</button>
+            <h1>Mis Reserva</h1>
+            <p class="text-center">{{reservas}}</p>
+        </div>
+    </div>
+    
+    
+    
+</div>
+
+
+  
+  

@@ -24,22 +24,6 @@ router.post('/' , function (req, res, next) {
             }
         });
         
-        
-        
-        /*u.findById(usuario._id, function (err, usuario) {
-            console.log("Usuario en local index" + JSON.stringify(usuario));
-            usuario.token = token;
-            console.log("usuario despues de guardar el token " + JSON.stringify(usuario));
-            console.log("token en local index" + token);
-            usuario.save(function (err) {
-                if(err){
-                    
-                    console.error("error guardando ");
-                }else{
-                    console.log("guardado exitoso");
-                }
-            });
-        });*/
         res.json({token: token});
         
     })(req, res, next)

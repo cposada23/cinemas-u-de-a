@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html ng-app="cineUdea">
+  <head>
+    
+    <title>Cine Udea</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="cliente/css/app.css" type="text/css" />-->
+    <link rel="stylesheet" href="cliente/css/font-awesome/css/font-awesome.min.css" type="text/css" />
+    
+    <!--<link rel="stylesheet" type="text/css" href="cliente/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="cliente/css/estiloPrincipal.css">
+    <link rel="stylesheet" type="text/css" href="ciente/css/style.css"  /> -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Maven+Pro:500' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="cliente/css/half-slider.css" type="text/css" />
+     
+  </head>
+  
+  <body>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="navController as tab">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li ng-class="{ active: tab.isSet(1) }"><a ui-sref="Home" ng-click="setTab(1)">Home</a></li>
+            <li class="dropdown">
+              <a ng-click="setTab(2)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cartelera <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                 <li ng-repeat="cine in cines"><a ui-sref="Cartelera({cineID:cine._id ,carteleraID:cine.cartelera})">{{cine.nombre}}</a></li>
+              </ul>
+            </li>
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            <!--<li ng-hide="isLoggedIn()"><a href="#registo" ui-sref="Registro" >Registrarse</a></li>-->
+            <li ng-hide="isLoggedIn()"><a href="" ng-click="registro()" >Registrarse</a></li>
+            <!--<li ng-hide="isLoggedIn()"><a ui-sref="Login">Login</a></li>-->
+            <li ng-hide="isLoggedIn()"><a href="" ng-click="login()">Login</a></li>
+            <li ng-show="isLoggedIn()"><a href="" >Bienvenido {{getCurrentUser().nombres}}</a></li>
+            <li ng-show="isLoggedIn()"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <header id="myCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></l>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+      
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="fill" style="background-image:url('https://cine-u-de-a-cposada23.c9users.io/public/recursos/imagenes/minions.jpg')"></div>
+              <div class="carousel-caption">
+                  <h2>Minions</h2>
+              </div>
+          </div>
+          
+          <div class="item">
+              <div class="fill" style="background-image:url('https://cine-u-de-a-cposada23.c9users.io/public/recursos/imagenes/dpool.jpg')"></div>
+              <div class="carousel-caption">
+                  <h2>Dead Pool</h2>
+              </div>
+          </div>
+          
+          <div class="item">
+              <div class="fill" style="background-image:url('https://cine-u-de-a-cposada23.c9users.io/public/recursos/imagenes/ultron.jpg')"></div>
+              <div class="carousel-caption">
+                  <h2>Avengers: Age of Ultron</h2>
+              </div>
+          </div>
+          
+          <div class="item">
+              <div class="fill" style="background-image:url('https://cine-u-de-a-cposada23.c9users.io/public/recursos/imagenes/btsp.jpg')"></div>
+              <div class="carousel-caption">
+                  <h2>Batman v Superman</h2>
+              </div>
+          </div>
+      </div>
+      
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="icon-prev"></span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="icon-next"></span>
+      </a>    
+    </header>
+    
+    
+    
+    <!-- Para cargar el contenido dinamico -->
+    <div class="center-block">
+      <div  ui-view  class="ppal b"></div>
+    </div>
+ 
+    <div class="container">
+      
+      
+    </div>
+    
+    
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-lg-offset-1 text-center">
+            <h4><strong>Cinemas U de A</strong></h4>
+            <p>Medellin, Antioquia, Colombia</p>
+            <ul class="list-unstyled">
+              <li><i class="fa fa-phone fa-fw"></i> (+57) 219-51-99</li>
+              <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:cineu@example.com">cineudea@udea.edu.co</a></li>
+            </ul>
+            <br>
+            <ul class="list-inline">
+              <li><a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a></li>
+              <li><a href="https://github.com/cposada23/cine"><i class="fa fa-github fa-fw fa-3x"></i></a></li>
+            </ul>
+            <hr class="small">
+            <p class="text-muted">Copyright <code>Cine-U-de-A-2016</code></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
+   
+    
+   
+    
+    
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+    <!-- angular animate -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+    <!-- uirouter -->
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <!-- ngcookies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
+    <!-- resource -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.js"></script>
+    <!-- ui-bootstrap -->
+    <script type="text/javascript" src="cliente/js/ui-bootstrap-tpls-1.0.0.min.js"></script>
+    
+    <!--spiner -->
+    <script type="text/javascript" src="cliente/js/spin.js"></script>
+    <script type="text/javascript" src="cliente/js/angular-spinner.js"></script>
+    
+    <!-- script app -->
+    
+    <!-- app -->
+    <script type="text/javascript" src="cliente/app/app.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/navController.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/registroController.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/auth/auth.service.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/auth/usuario.service.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/loginController.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/auth/moongoose-error.directive.js"></script>
+    <script type="text/javascript" src="Cliente/app/controladores/carteleraController.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/peliculaController.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/reservaController.js"></script>
+    
+    <script type="text/javascript" src="cliente/app/controladores/registroController2.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/loginController2.js"></script>
+    
+    <!--Modals-->
+    <script type="text/javascript" src="cliente/app/controladores/modal/registroModal.js"></script>
+    <script type="text/javascript" src="cliente/app/controladores/modal/loginModal.js"></script>
+  
+    
+    <script type="text/javascript" src="cliente/js/jquery.slides.js"></script>
+
+	<script >
+	  $('.carousel').carousel({
+      interval:3000	  
+	  })
+	</script>
+    
+     
+    
+  </body>
+</html>

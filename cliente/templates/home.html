@@ -1,2 +1,164 @@
+<div id="peliculas" class="overflow">
+	<div class="titulo">Películas</div>
+	<div class="scroll-pane center-block">
+	    
+		<div class="scroll-content">
+		    
+			<div class="scroll-content-item" ng-repeat="pelicula in peliculas">
+				<img ng-src="{{pelicula.imagen}}" class="imgPelicula"></img>
+				<a ui-sref="Pelicula({peliculaID : pelicula.idPelicula})" class="center-block">{{pelicula.nombrePelicula}}</a>
+			</div>
+			
+		</div>
+		
+	</div>
+</div>
+<!-- CIERRA PELICULAS-->
+
+<div id="noticias" class="overflow">
+	<div class="titulo">Noticias</div>
+
+	<div id="noticiasLista">
+
+		<div id="noticia-principal">
+
+			<div class="col-xs-10 col-sm-10 col-md-6 noticia ">
+				<img src="http://screenrant.com/wp-content/uploads/Star-Wars-7-Character-Guide-Kylo-Ren.jpg" alt="etc" />
+				<h3><span><a href="http://www.sensacine.com/noticias/cine/noticia-18526520" target="_blank">
+					Star wars.¿El despertar de la fuerza?
+				</a></span></h3>
+			</div>
+			
+			<div class="col-xs-10 col-sm-10 col-md-6 noticia ">
+				<img src="https://thereservoirbloggers.files.wordpress.com/2015/12/jennifer-buena.jpg?w=1200" />
+				<h3><span><a href="http://www.sensacine.com/noticias/cine/noticia-18526520" target="_blank">
+					Estreno de Sinsajo en Londres
+				</a></span></h3>
+			</div>
+		</div>
+
+		<div id="noticias">
+			<div class="col-xs-6 col-sm-6 col-md-3 noticia center-block">
+				
+				<img src="http://images2.alphacoders.com/526/526757.jpg" />
+				<h3><span><a href="http://site.lacosacine.com/cine/view/1177/UNA-CHICA-Y-UN-MUTANTE-VAN-PARA-EL-FILM-DE-DEADPOOL" target="_blank">
+						Una chica y un mutante para el film de deadpool
+					</a></span></h3>
+			</div>
+
+			<div class="col-xs-6 col-sm-6 col-md-3 noticia center-block">
+				<img src="http://www.guiltybit.com/wp-content/uploads/2015/02/640x360xannie-disney-noticias-mexico-piratas-del-caribe-tiene-nuevo-guionista-241288.jpg.pagespeed.ic_.sKWIe7_-8r.jpg" />
+				<h3><span><a href="http://www.tntla.com/noticias/nuevos-piratas-a-bordo" target="_blank">
+					¡Nuevos piratas a bordo
+				</a></span></h3>
+
+			</div>
+
+			<div class="col-xs-6 col-sm-6 col-md-3 noticia center-block">
+				<img src="http://cdn4.filmotopia.com/wp-content/uploads/2015/03/Fifty-Shades-of-Grey-2015.jpg" />
+				<h3><span><a href="http://www.tntla.com/noticias/las-15-imperdibles-de-2015#image=2" target="_blank">
+					15 imperdibles del 2015
+				</a></span></h3>
+			</div>
+
+			<div class="col-xs-6 col-sm-6 col-md-3 noticia center-block">
+				<img src="http://staticvosf5a.lavozdelinterior.com.ar/sites/default/files/nota_periodistica/paul_walker_0.jpg" />
+				<h3><span><a href="http://www.tntla.com/noticias/mas-mensajes-a-paul-walker-tras-terminar-el-rodaje-de-fast-furious-7" target="_blank">
+					Vin Diesel y Michelle Rodriguez escribieron unas palabras para recordar a su amigo
+				</a></span></h3>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- CIERRA NOTICIAS-->
+
+<div id="social" class="overflow">
+	<div class="titulo">Social</div>
+
+	<div id="seccion1">
+		<div class="col-md-4 col-sm-12 col-xs-12 forma" id="encuesta">
+			<form class="form-horizontal">
+
+				<!-- Form Name -->
+				<legend class="tituloForm">CindeUdeA Pregunta</legend>
+
+				<!-- Multiple Radios -->
+				<div class="form-group">
+					<label class=" control-label" for="radios">¿Cual es la película que más esperas en este año?</label>
+					<div class="">
+						<div class="radio">
+							<label for="radios-0">
+								<input type="radio" name="radios" id="radios-0" value="1" checked="checked"> Star Wars Anthology: Rogue One
+							</label>
+						</div>
+						<div class="radio">
+							<label for="radios-1">
+								<input type="radio" name="radios" id="radios-1" value="2"> Resident Evil: The Final Chapter
+							</label>
+						</div>
+						<div class="radio">
+							<label for="radios-2">
+								<input type="radio" name="radios" id="radios-2" value="3"> X-Men: Apocalypse
+							</label>
+						</div>
+						<div class="radio">
+							<label for="radios-3">
+								<input type="radio" name="radios" id="radios-3" value="4"> Capitán América: Civil War
+							</label>
+						</div>
+						<div class="radio">
+							<label for="radios-4">
+								<input type="radio" name="radios" id="radios-4" value="5"> Deadpool
+							</label>
+						</div>
+						<button class="btn btn-primary " name="submit" type="submit">
+							Enviar
+						</button>
+						<!--<button class="btn btn-primary " name="submit" type="submit">
+							Ver resultados
+						</button>-->
+					</div>
+				</div>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-6 forma" id="pubTarjeta">
+			<img src="cliente/src/pub_ppal/pubTarjeta.png"></img>
+			<!-- 500x500px-->
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-6 forma" id="noseque">
+			<img src="http://freedesignfile.com/upload/2014/07/Movie-time-design-elements-vector-backgrounds-04.jpg"></img>
+			<!-- 500x500px-->
+		</div>
+
+	</div>
+	<div id="seccion2" class="col-md-12 col-sm-12 col-xs-12">
+		<div id="pubAppMovil" class="forma">
+			<img src="cliente/src/pub_ppal/banner_app_movil.png"></img>
+		</div>
+	</div>
+	<div id="seccion3">
+		<div id="twitter-snippet" class="col-md-6 col-sm-6 col-xs-6 forma">
+			<a class="twitter-timeline" href="https://twitter.com/CineUdea" data-widget-id="689618524122288129">Tweets por el @CineUdea.</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</div>
+		<div id="facebook-snippet" class="col-md-3 col-sm-5 col-xs-5 forma">
+			<!--
+			<img src="http://wuaala.es/wp-content/uploads/2015/06/SiguenosFacebook.jpg"></img>
+			<img src="http://www.lapequenataberna.com/wordpress/wp-content/uploads/Siguenos_en_Twitter.png"></img>
+			-->
+			<div class="fb-page" data-href="https://www.facebook.com/Cine-UdeA-488636664594960" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.5";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
+		</div>
+	</div>
+
+</div>
+<!-- CIERRA SOCIAL-->
 
 

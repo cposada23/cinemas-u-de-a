@@ -10,7 +10,7 @@
         .state('Home',{
             url:"/home",
             templateUrl:"cliente/templates/home.html",
-            //controller:"homeCtrl"
+            controller:"homeCtrl"
         })
         .state('Registro',{
             url:"/registro",
@@ -40,6 +40,17 @@
             templateUrl:"cliente/templates/reserva.html",
             controller:"reservaController",
             authenticate:true
+        })
+        .state('Perfil',{
+            url:"/perfil",
+            templateUrl:"cliente/templates/perfil.html",
+            controller:"perfilController",
+            authenticate:true
+        })
+        .state('Tarifas',{
+            url:"/Tarifas",
+            templateUrl:"cliente/templates/tarifas.html",
+            
         });
         
     });

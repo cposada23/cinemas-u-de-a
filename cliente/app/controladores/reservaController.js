@@ -48,6 +48,7 @@
                     x++;
                     i--;
                 }
+                $scope.misReservas();
             }).error(function (error) {
                 console.error(error);
             });
@@ -104,10 +105,10 @@
             
             $http.post('/api/boleta/cancelar', {boleta: id}).success(function (response) {
                 console.log("cancelad " +  JSON.stringify(response));
-                var i = $scope.reservas.indexOf(id);
-                console.log("i "+ i);
-                console.log("reservas[i-1] " + $scope.reservas[i-1]);
-                $scope.reservas.splice(i-1,1);
+                //var i = $scope.reservas.indexOf(id);
+                //console.log("i "+ i);
+                //console.log("reservas[i-1] " + $scope.reservas[i-1]);
+                //$scope.reservas.splice(i-1,1);
                 $scope.llenarDatos();
             }).error(function(error) {
                 console.log("Error " +JSON.stringify(error) );
@@ -119,7 +120,7 @@
                 if(reservas.length!=0){
                     $scope.reservas = reservas;
                 }else{
-                    $scope.reservas = "No tiene reservas para esta función";
+                    $scope.reservas = [];
                 }
                 console.log("mis reservas");
             }).error(function(error) {

@@ -1,0 +1,35 @@
+<style type="text/css">
+  form.tab-form-demo .tab-pane {
+    margin: 20px 20px;
+  }
+</style>
+
+<div>
+
+  <form name="outerForm" class="tab-form-demo">
+    <uib-tabset>
+      <uib-tab heading="Pago con tarjeta">
+        <ng-form name="nestedForm">
+          <div class="form-group">
+            <label>Name</label>
+            
+            <input type="text" class="form-control" placeholder="{{getCurrentUser().nombres}}" required />
+          </div>
+        </ng-form>
+      </uib-tab>
+      <uib-tab heading="Pago con puntos">
+        
+        
+                    
+                  <h1>Usted tiene {{getCurrentUser().puntos}} puntos disponibles para pagar</h1>
+                  <h1>{{boleta}}</h1>
+                  <h1>Precio de la/las boleta/as = {{info.precioPuntos}} puntos</h1>
+                  <button class="btn btn-default" ng-click="pagar()">pagar con puntos</button>
+          
+   
+      </uib-tab>
+      
+    </uib-tabset>
+  </form>
+  
+</div>

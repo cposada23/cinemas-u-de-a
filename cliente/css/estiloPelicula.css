@@ -1,0 +1,72 @@
+#content {
+    width: 1200px;
+    max-height: 400px;
+    margin: 0px auto;
+}
+
+#column-left {
+    border: 1px solid #D2D2D2;
+    border-radius: 8px 8px 8px 8px;
+    float: left;
+    position: fixed;
+    min-height: 225px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+    text-align: center;
+    width: 400px;
+    max-height: 400px;
+}
+
+#central {
+    border: 1px solid #D2D2D2;
+    border-radius: 8px 8px 8px 8px;
+    float: right;
+    margin-bottom: 10px;
+    width: 1200px;
+    display: inline-block;
+    margin-right: auto;
+    text-align: center;
+}
+
+#content img {
+    width: 100%;
+    max-height: 400px;
+}
+
+/*************************/
+
+.container-trailer {
+    padding-right: 10%;
+    padding-left: 10%;
+    background-color: rgb(17,31,41);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.video-responsive {
+    padding-top: 56.25%;
+    height: 0px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 20px #f5f5f5;
+}
+    
+.video-responsive iframe{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.titulo-ficha{
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: bold;
+}
+
+.imagen-ficha img{
+    max-width:100%;
+}

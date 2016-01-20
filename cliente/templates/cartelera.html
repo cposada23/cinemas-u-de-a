@@ -1,5 +1,16 @@
-<h1>Cartelera</h1>
-
-<div ng-repeat="pelicula in peliculas">
-    <h3><a ui-sref="Pelicula({peliculaID : pelicula.idPelicula})">{{pelicula.nombrePelicula}}</a></h3>    
+<div id="peliculas" class="overflow">
+	<div class="titulo">Películas</div>
+	<div class="pane center-block">
+	    
+		<div class="content">
+		    
+			<div class="content-item" ng-repeat="pelicula in peliculas">
+				<img ng-src="{{pelicula.imagen}}" class="imgPelicula"></img>
+				<a ui-sref="Pelicula({peliculaID : pelicula.idPelicula})" class="center-block">{{pelicula.nombrePelicula}}</a>
+			</div>
+			
+		</div>
+		
+	</div>
 </div>
+<!-- CIERRA PELICULAS-->

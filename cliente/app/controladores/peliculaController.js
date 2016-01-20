@@ -1,6 +1,6 @@
 (function () {
     var app = angular.module('cineUdea');
-    app.controller('peliculaController',['$scope','$state','$http','Auth','$location','$uibModal','$stateParams', 'loginModal','$rootScope',function ($scope,$state,$http,Auth,$location, $uibModal,$stateParams, loginModal , $rootScope) {
+    app.controller('peliculaController',['$scope','$state','$http','Auth','$location','$uibModal','$stateParams', 'loginModal','$rootScope','$sce',function ($scope,$state,$http,Auth,$location, $uibModal,$stateParams, loginModal , $rootScope, $sce) {
         $scope.peliculaid = $stateParams.peliculaID;
         $scope.getCurrentUser= Auth.getCurrentUser;
         $scope.isLoggedIn = Auth.isLoggedIn;
@@ -10,6 +10,10 @@
         $http.get('/api/pelicula/'+$scope.peliculaid).success(function (pelicula) {
             console.log("pelicula" + JSON.stringify(pelicula));
             $scope.pelicula = pelicula;
+            var t = $scope.pelicula.trailer.split('/');
+            $scope.trailer = "https://www.youtube.com/embed/"+ t[t.length  - 1]; 
+            $scope.url = $sce.trustAsResourceUrl($scope.trailer);
+            
         }).error(function (error) {
             console.error("error" + error);
         });

@@ -28,23 +28,23 @@ textarea{
 .maven-font{
 	font-family: 'Maven Pro', sans-serif;
 }
- .navbar-default{
+
+ .navbar{
  	background-color: rgb(17,31,41); 	
  }
 
 /*Arreglar*/
-.navbar-default ul li a{
+.navbar ul li a{
 	color: #286090;
 }
 
-.navbar-default .navbar-nav>li>a {
+.navbar .navbar-nav>li>a {
 	color: #FFFFFF;
 }
 
 #principal{
 	background-color: rgb(248,249,244);
 	width: 95%;
-	height: 3500px;	
 	margin-top: 90px;
 	margin-bottom: 30px;
 	padding-top:20px;

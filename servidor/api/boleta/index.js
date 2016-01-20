@@ -11,4 +11,7 @@ router.post('/cancelar', auth.isAuthenticated(), controller.cancelar); // Cancel
 router.get('/misBoletas', auth.isAuthenticated(), controller.misBoletas); // Obtener mis boletas 
 router.get('/misBoletas/:idFuncion', auth.isAuthenticated(), controller.misBoletasPorFuncion);// Obtener las boletas de una funcion en especifico
 router.get('/:idUsuario/:idFuncion', controller.get);
+router.get('/:idBoleta', controller.miBoleta);// Obtener una boleta para poder pagarla
+router.post('/infoBoletas', controller.info);
+router.post('/pagar' , auth.isAuthenticated(),controller.pagar); // pagar boletas
 module.exports = router;

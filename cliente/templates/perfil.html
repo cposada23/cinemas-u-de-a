@@ -1,0 +1,155 @@
+
+<style type="text/css">
+  form.tab-form-demo .tab-pane {
+    margin: 20px 20px;
+  }
+</style>
+
+<div>
+
+  <form name="outerForm" class="tab-form-demo">
+    <uib-tabset>
+      <uib-tab heading="Mis Datos">
+        <ng-form name="nestedForm">
+          <!--
+          <div class="form-group">
+            <label>Nombre: </label>
+            <label>{{getCurrentUser().nombres}}</label>
+           </div>
+           
+           <div class="form-group">
+            <label>Apellido: </label>
+            <label>{{getCurrentUser().apellidos}}</label>
+           </div>
+           
+           <div class="form-group">
+            <label>Documento: </label>
+            <label>{{getCurrentUser().tipDoc}} {{getCurrentUser().documento}}</label>
+           </div>-->
+           <table>
+             <tr>
+               <td>Nombre:</td>
+               <td>{{getCurrentUser().nombres}}</td>
+             </tr>
+             
+             <tr>
+               <td>Apellido:</td>
+               <td>{{getCurrentUser().apellidos}}</td>
+             </tr>
+             
+             <tr>
+               <td>Documento:</td>
+               <td>{{getCurrentUser().tipoDoc}} {{getCurrentUser().documento}}</td>
+             </tr>
+             
+             <tr>
+               <td>Email:</td>
+               <td>{{getCurrentUser().email}}</td>
+             </tr>
+             
+             <tr>
+               <td>Telefono:</td>
+               <td>{{getCurrentUser().telefono}}</td>
+             </tr>
+             
+             <tr>
+               <td>Celular:</td>
+               <td>{{getCurrentUser().celular}}</td>
+             </tr>
+             
+             <tr>
+               <td>Genero:</td>
+               <td>{{getCurrentUser().sexo}}</td>
+             </tr>
+             
+             <tr>
+               <td>Barrio:</td>
+               <td>{{getCurrentUser().barrio}}</td>
+             </tr>
+             
+             <tr>
+               <td>Direccion:</td>
+               <td>{{getCurrentUser().direccion}}</td>
+             </tr>
+             
+             <tr>
+               <td>Fecha de nacimiento: </td>
+               <td>{{getCurrentUser().fechaNacimiento}}</td>
+             </tr>
+             
+             <tr>
+               <td>Género de pelicula favorito: </td>
+               <td>{{getCurrentUser().generoPelicula}}</td>
+             </tr>
+             
+           </table>
+        </ng-form>
+      </uib-tab>
+      
+      
+      <uib-tab heading="Mis Boletas">
+        
+        <div class="col-sm-8 col-sm-offset-2" style="overflow: hidden;">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    
+                  <table class="table table-bordered" ng-repeat ="funcion in usuario.funciones">
+                      <thead>
+                          <tr>
+                              <td colspan="8">
+                                  {{funcion.pelicula}}
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>Cinema</td>
+                              <td>Sala</td>
+                              <td>Silla</td>
+                              <td>Hora</td>
+                              <td>Estado</td>
+                              <td>QR</td>
+                              <td>Cancelar</td>
+                              <td>Pagar</td>
+                              
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr ng-repeat="datos in funcion.datos">
+                              <td >{{datos.cinema}}</td>
+                              <td>{{datos.sala}}</td>
+                              <td>{{datos.silla}}</td>
+                              <td>{{datos.hora}}</td>
+                              <td>{{datos.estado}}</td>
+                              <td><img  ng-src="{{datos.qr}}"></img></td>
+                              <td > <button class="btn btn-danger" ng-click="cancelarReserva(datos.id)">cancelar</button></td>
+                              <td><button class="btn btn-default" ng-disabled="{{datos.estado!=='En reserva' }}" ng-class = "{'btn btn-danger':!disable(datos.id), 'btn btn-success':disable(datos.id)}"ng-click="pagar(datos.id)">Pagar</button></td>
+                          </tr>
+                          <tr>
+                            <td colspan="8"><button ng-click="confirmar()">Confirmar</button></td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  
+                </div>
+            </div>
+        </div>
+   
+      </uib-tab>
+      
+      <uib-tab heading="Actualizar Datos">
+        <ng-form name="nestedForm">
+          
+          <div class="form-group">
+            <label>Nombre: </label>
+            <input id="nombreInput" name="textinput" type="text" placeholder="{{getCurrentUser().nombres}}" class="form-control input-md">
+           </div>
+          </ng-form>
+        </uib-tab>
+    </uib-tabset>
+  </form>
+  
+</div>
+
+
+
+
+

@@ -1,38 +1,123 @@
-<h1>Pelicula</h1>
-{{pelicula}}
+<div id="contenedor">
+    <div id="titulo_pelicula">
+        <h1>{{pelicula.nombre}}</h1>
+        <br>
+    </div>
+    <div id="trailer" class="container container-trailer">
+        <div class="video-responsive">
+            <iframe ng-src="{{url}}" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
 
-<div class="container">
-    <h2>Horarios</h2>
-    <div class="row" ng-repeat="funcion in funciones">
-        <h3>{{funcion.sala }}: {{funcion.horaFuncion }} <a class="btn btn-default btn-lg btn-register" ui-sref="Reserva({funcionID:funcion.idFuncion})">Reservar</a></h3> 
-    </div>
-    
-    <h1>Comentarios de {{pelicula.nombre}}</h1>
-    <div class="row" ng-repeat="comentario in pelicula.comentarios">
-        <h3><strong>{{comentario.autor}}:</strong>{{ comentario.texto}}  en {{comentario.fecha}}</h3>
-    </div>
-   
-    <div class="row" ng-show="isLoggedIn()">
-        <form name="form" ng-submit="form.$valid && addComentario(form)" novalidate>
-            <blockquote>
-                Por: <strong>{{getCurrentUser().nombres }}</strong>
-                {{nuevoComentario}}
-            </blockquote>
+    <div id="info" class="container">
+        <div class="imagen-ficha col-md-2 col-sm-3 col-xs-3">
+            <img ng-src="{{pelicula.imagen}}"></img>
+        </div>
+        <div id="ficha_tecnica" class="col-md-5 col-sm-9 col-xs-9">
+
+            <table class="table table-bordered">
+                <thead>
+                    <td colspan="2">
+                        Ficha tecnica
+                    </td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <h3>Sinopsis</h3>
+                            <p>
+                                {{pelicula.descripcion}}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="titulo-ficha">Formato</td>
+                        <td>{{pelicula.formato}}</td>
+                    </tr>
+                    <tr>
+                        <td class="titulo-ficha">Idioma</td>
+                        <td>{{pelicula.lenguaje}}</td>
+                    </tr>
+                    <tr>
+                        <td class="titulo-ficha">Genero</td>
+                        <td>{{pelicula.genero}}</td>
+                    </tr>
+                    <tr>
+                        <td class="titulo-ficha">Pais</td>
+                        <td>{{pelicula.pais}}</td>
+                    </tr>
+                    <tr>
+                        <td class="titulo-ficha">Clasificacion</td>
+                        <td>{{pelicula.censura}}</td>
+                    </tr>
+                    <tr>
+                        <td class="titulo-ficha">Director</td>
+                        <td>{{pelicula.director}}</td>
+                    </tr>
+                    <tr>
+                        <td class="titulo-ficha">Reparto</td>
+                        <td><h6 ng-repeat="r in pelicula.reparto">{{r.nombre}}</h6></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="cartelera" class="col-md-5 col-sm-12 col-xs-12">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td colspan="3">
+                            Cartelera
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sala</td>
+                        <td colspan="2">Horario</td>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="funcion in funciones">
+                        <td >{{funcion.sala}}</td>
+                        <td>{{funcion.horaFuncion}}</td>
+                        <td><a class="btn btn-default btn-lg btn-register" ui-sref="Reserva({funcionID:funcion.idFuncion})">Reservar</a></td>
+                    </tr>
+                </tbody>
+            </table>
             
-            <h2>Enviar un comentario</h2>
-            <fieldset class="form-group">
-                <textarea class="form-controll" placeholder="Escribe un comentario" ng-model="nuevoComentario" required></textarea>
-            </fieldset>
-            
-            
-            <fieldset class="form-group">
-                <button class="btn btn-inverse btn-lg btn-logic" type="submit">Comentar</button>
-            </fieldset>
-        </form>
-    </div>
-    
-    <div class="row" ng-hide="isLoggedIn()">
-        <h1>Para comentar se necesita estar logueado</h1>
-        <button class="btn btn-inverse btn-lg btn-login" ng-click="login()">Login</button>
+            <div id="comentarios">
+                
+                <h2>Comentarios</h2>
+                <a ng-show="!isLoggedIn()" ng-click="login()" href=""><span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span>Comentar</a>
+                <form name="form" class="form-horizontal" ng-show="isLoggedIn()" ng-submit="form.$valid && addComentario(form)" novalidate>
+                    <fieldset>
+                        <div>
+                            <a><span class="glyphicon glyphicon glyphicon-star" aria-hidden="true"></span>Recomendar</a>
+                            <a><span class="glyphicon glyphicon glyphicon-share" aria-hidden="true"></span>Compartir</a>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="textarea"></label>
+                            <div class="col-md-12">
+                                <textarea class="form-control" id="textarea" name="textarea" placeholder="Nuevo comentario" ng-model="nuevoComentario" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="btnEnviar"></label>
+                            <div class="col-md-4">
+                                <button id="btnEnviar" name="btnEnviar" class="btn btn-primary" type="submit">Enviar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <div id="coments">
+                    <div ng-repeat="comentario in pelicula.comentarios">
+                        <h4><strong>{{comentario.autor}}:</strong>{{ comentario.texto}}  en {{comentario.fecha}}</h4>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </div>
 </div>

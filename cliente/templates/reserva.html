@@ -1,9 +1,4 @@
-
-<h1>Sala</h1>
-
-{{sala}}
-
-<div class="col-sm-8 col-sm-offset-2">
+<div class="col-sm-8 col-sm-offset-2" style="overflow: hidden;">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 text-center">
             <h3>pantalla</h3>
@@ -31,11 +26,8 @@
 
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 text-center">
-            <button ng-click="misReservas()">mis reservas para esta funcion</button>
-            <h1>Mis Reserva</h1>
-            <p>{{reservas}}</p>
-            
-            
+            <!--<button ng-click="misReservas()">mis reservas para esta funcion</button>-->
+            <h1>Mis Reservas para esta función</h1>
         </div>
         <div class="col-lg-8 col-lg-offset-2 text-center">
             <table class="table table-striped" style="margin: 0 auto;">
@@ -49,8 +41,8 @@
                 </thead>
                 <tbody>
                     <tr  ng-repeat="reserva in reservas">
-                      <td >  {{reserva.silla.fila}}-{{reserva.silla.numero}}</td>
-                      <td >  {{reserva.silla.localidad}}</td>
+                      <td >{{reserva.silla.fila}}-{{reserva.silla.numero}}</td>
+                      <td >{{reserva.silla.localidad}}</td>
                       <td >{{funcion.hora}} </td>
                       <td > <button class="btn btn-danger" ng-click="cancelarReserva(reserva._id)">cancelar</button></td>
                     </tr>

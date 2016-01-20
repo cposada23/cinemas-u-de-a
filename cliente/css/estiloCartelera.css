@@ -1,0 +1,51 @@
+body {
+    background-color: transparent;
+}
+
+.pane {
+    overflow: hidden;
+    width: 95%;
+    font-size: 1.1em;
+    border-radius: 5px;
+}
+
+.content-item {
+    height: 300px;
+    float: left;
+    margin: 5px;
+    font-size: 1em;
+    line-height: inherit;
+    text-align: center;
+    background-color: rgb(17, 31, 41);
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+}
+
+.content-item a {
+    color: #f1f1f1;
+    text-decoration: none;
+    display: block;
+}
+
+#listaPeliculas {
+    list-style: none;
+}
+
+#listaPeliculas li {
+    font-size: 1.5em;
+}
+
+#listaPeliculas li img {
+    width: 70%;
+    display: block;
+}
+
+#listaPeliculas li a {
+    color: black;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+.pelicula {
+    overflow: hidden;
+    padding: 10px;
+}
